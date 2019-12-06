@@ -10,21 +10,21 @@ it's about to be written in C++. (not any particular reason)
 
 The type of each entity is written right next to its name.  
 
-NOTE: TBD stands for "To Be Decided", meaning it's not specified yet.  
-NOTE: Each entity will be linked to its own document for details when document is created.  
+**NOTE**: TBD stands for "To Be Decided", meaning it's not specified yet.  
+**NOTE**: Each entity will be linked to its own document for details when document is created.  
 
-*   Chess \(Class\)
-*   Player \(Class\)
-*   Board \(Class\)
-*   Map \(Class\)
-*   Piece \(Abstract Class\)
-    *   King \(Class\)
-    *   Queen \(Class\)
-    *   Bishop \(Class\)
-    *   Knight \(Class\)
-    *   Rook \(Class\)
-    *   Pawn \(Class\)
-*   Point \(Class\)
-*   Type \(Enum\)
-*   State \(Class\)
-*   Status \(Chess\)
+*   Chess : Class
+*   Player : Class
+*   Map : Class
+*   Board : Class
+*   State : Class
+*   Point : Class
+*   Status : Enum
+*   Type : Enum
+*   Piece : Abstract Class
+    *   King : Class
+    *   Queen : Class
+    *   Bishop : Class
+    *   Knight : Class
+    *   Rook : Class
+    *   Pawn : Class
