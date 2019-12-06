@@ -13,15 +13,15 @@ The type of each entity is written right next to its name.
 **NOTE**: TBD stands for "To Be Decided", meaning it's not specified yet.  
 **NOTE**: Each entity will be linked to its own document for details when document is created.  
 
-*   Chess : Class
-*   Player : Class
-*   Map : Class
-*   Board : Class
-*   State : Class
-*   Point : Class
-*   Status : Enum
-*   Type : Enum
-*   Piece : Abstract Class
+*   [Chess](./entities/chess.md) : Class
+*   [Player](./entities/player.md) : Class
+*   [Map](./entities/map.md) : Class
+*   [Board](./entities/board.md) : Class
+*   [State](./entities/state.md) : Class
+*   [Point](./entities/point.md) : Class
+*   [Status](./entities/status.md) : Enum
+*   [Type](./entities/type.md) : Enum
+*   [Piece](./entities/piece.md) : Abstract Class
     *   King : Class
     *   Queen : Class
     *   Bishop : Class
