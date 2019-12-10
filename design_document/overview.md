@@ -28,3 +28,5 @@ The type of each entity is written right next to its name.
     *   Knight : Class
     *   Rook : Class
     *   Pawn : Class
+*   [PieceRole](./entities/piece_role.md) : Enum
+
