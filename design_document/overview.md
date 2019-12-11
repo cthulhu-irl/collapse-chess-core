@@ -22,7 +22,7 @@ The type of each entity is written right next to its name.
 *   [Status](./entities/status.md) : Enum
 *   [Type](./entities/type.md) : Enum
 *   [Piece](./entities/piece.md) : Abstract Class
-    *   King : Class
+    *   [King](./entities/king.md) : Class
     *   Queen : Class
     *   Bishop : Class
     *   Knight : Class
