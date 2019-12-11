@@ -30,11 +30,11 @@ Each method is described in simple C++ method prototype form.
         > and `y` must be numeric 1 to 8, or character '1' to '8'
 
 *   public:
-    *   unsigned char x()
+    *   unsigned char getX()
 
         > returns property `x`
 
-    *   unsigned char y()
+    *   unsigned char getY()
 
         > returns property `y`
 
