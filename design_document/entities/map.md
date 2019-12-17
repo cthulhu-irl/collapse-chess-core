@@ -17,6 +17,8 @@ Each method is described in simple C++ method prototype form.
 
 **NOTE**: it's **simplified**! meaning type notations are not _exact_ but from same class. being *const* or *pointer* or etc. will be decided later.
 
+**NOTE**: this class will use a factory class for piece.
+
 *   constructor(s):
     *   Map()
 
