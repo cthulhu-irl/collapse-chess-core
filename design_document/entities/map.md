@@ -1,4 +1,4 @@
-# State Class
+# Map Class
 
 **NOTE**: this is a class only to be extensible.
 
@@ -6,10 +6,10 @@
 
 Each property is described in format "\<name\> : \<type\>" under its access attribute.
 
-*   public:
-    *   status : Status
+**NOTE**: this class requires std::array from standard c++ library.
 
-        > status of the board/game.
+*   public:
+    *   table : std::array\<std::array\<Piece, 8\>, 8\>
 
 ## Methods
 
@@ -20,9 +20,10 @@ Each method is described in simple C++ method prototype form.
 *   constructor(s):
     *   Map()
 
-        > creates an empty table of 8x8.
+        > creates an empty `table` of 8x8.
 
-    *   Map(/\* 8x8 matrix of Piece \*/)
+    *   Map(std::array\<std::array\<PieceRole, 8\>, 8\> table)
 
-        > just sets the right argument to the corresponding property.
+        > initializes the table with instances of |Piece| in 
+        > each cell corresponding to specified PieceRole in `table`.
 
