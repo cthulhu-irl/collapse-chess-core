@@ -54,6 +54,16 @@ Each method is described in simple C++ method prototype form.
         > updates the `state` and returns it.  
         > after this, the game won't be playable, but it can be reset.
 
+    *   State rank(Player cur, PieceRole role)
+
+        > checks if `cur` is the current player, and this action 
+        > matches the `state` (same player, status must be RANK), so 
+        > then upgrades last rank pawn through `board`.  
+        > if it fail, the state remains, otherwise it will become 
+        > the TURN of opposite player.  
+        > (last rank pawn is a Pawn piece that reaches 8th 
+        > tile/block of Y-axis in board.)
+
     *   State reset()
 
         > reconstructs the game using `map_init`,
