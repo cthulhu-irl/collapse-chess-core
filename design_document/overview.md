@@ -24,7 +24,7 @@ The type of each entity is written right next to its name.
 *   [Piece](./entities/piece.md) : Abstract Class
     *   [King](./entities/king.md) : Class
     *   [Queen](./entities/queen.md) : Class
-    *   Bishop : Class
+    *   [Bishop](./entities/bishop.md) : Class
     *   Knight : Class
     *   Rook : Class
     *   Pawn : Class
