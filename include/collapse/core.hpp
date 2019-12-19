@@ -1,0 +1,4 @@
+#ifndef COLLAPSE_CORE_HPP
+#define COLLAPSE_CORE_HPP
+
+#endif // COLLAPSE_CORE_HPP
