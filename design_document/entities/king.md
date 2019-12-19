@@ -12,8 +12,6 @@ Each property is described in format "\<name\> : \<type\>" under its access attr
 
 *   private:
     *   type : Type
-
-*   public:
     *   role : Role
 
 ## Methods
