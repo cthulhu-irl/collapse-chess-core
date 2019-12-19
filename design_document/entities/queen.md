@@ -26,10 +26,9 @@ Each method is declared in **simple** C++ method prototype form.
 *   public:
     *   bool isValidMove(Map map, Point src, Point dst)
         > checks if a move from `src` to `dst` in this map, 
-        > is valid for a King in chess or not.
+        > is valid for a Queen in chess or not.
         > 
         > The checks are as follow:
-        > *   if it's a valid castling move
         > *   if `dst` and `src` have horizontal, vertical 
         >     or diagonal linear relation.
         > *   check if there aren't any other pieces in middle of 
