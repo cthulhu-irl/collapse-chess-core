@@ -26,7 +26,7 @@ The type of each entity is written right next to its name.
     *   [Queen](./entities/queen.md) : Class
     *   [Bishop](./entities/bishop.md) : Class
     *   [Rook](./entities/rook.md) : Class
-    *   Knight : Class
+    *   [Knight](./entities/knight.md) : Class
     *   [Pawn](./entities/pawn.md) : Class
 *   [PieceRole](./entities/piece_role.md) : Enum
 
