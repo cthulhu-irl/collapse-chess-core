@@ -4,7 +4,10 @@ Chess class represents a chess game, requiring 2 players and a map for board ini
 
 this class supports 2 main actions for player's prespective:
 *   `move`: move a piece from a point to another point.
-          player must own the piece.
+            player must own the piece.
+*   `rank`: rank up the last pawn which made to the top of board, 
+            8th rank/tile/block in Y-axis, to one of four roles: 
+            queen, bishop, rook, knight.
 *   `fold`: a player might fold, winner will be the opposite player.
 
 and also an action that's not about the game:
