@@ -53,6 +53,7 @@ class IPiece {
 
 class IPlayer {
  public:
+    IPlayer();
     explicit IPlayer(Type type);
     virtual Type getType() = 0;
     virtual PieceRole getRole() = 0;
@@ -80,6 +81,7 @@ class IState {
     IPlayer &player;
     Status status;
 
+    IState();
     IState(IPlayer &player, Status status);
     virtual ~IState() = 0;
 };
