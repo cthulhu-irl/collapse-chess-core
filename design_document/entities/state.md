@@ -15,11 +15,7 @@ Each property is described in format "\<name\> : \<type\>" under its access attr
 
     *   player : Player
 
-        > oppposite player of the one that made last action.
-
-    *   map : Map
-
-        > map of current board's pieces.
+        > opposite player of the one that made last action.
 
 ## Methods
 
@@ -28,6 +24,6 @@ Each method is described in simple C++ method prototype form.
 **NOTE**: it's **simplified**! meaning type notations are not _exact_ but from same class. being *const* or *pointer* or etc. will be decided later.
 
 *   constructor(s):
-    *   State(Status status, Player player, Map map)
+    *   State(Status status, Player player)
 
         > just sets the right argument to the corresponding property.
