@@ -55,12 +55,13 @@ class IPlayer {
  public:
     explicit IPlayer(Type type);
     virtual Type getType() = 0;
+    virtual PieceRole getRole() = 0;
 };
 
 class IMap {
  public:
     IMap();
-    explicit IMap(std::array<std::array<T, 8>, 8> &init_table);
+    explicit IMap(std::array<std::array<IPiece, 8>, 8> &&init_table);
     IMap(std::initializer_list<std::array<PieceRole, 8>> init_table);
     virtual std::array<IPiece, 8> &operator[](std::size_t index) = 0;
 };
@@ -90,8 +91,8 @@ class IChess {
            const IMap &map);
 
     const IState &move(const IPlayer &player,
-                      const IPoint &src,
-                      const IPoint &dst);
+                       const IPoint &src,
+                       const IPoint &dst);
     const IState &rank(const IPlayer &player, PieceRole role);
     const IState &fold(const IPlayer &player);
     const IState &reset();
