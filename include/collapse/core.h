@@ -67,7 +67,7 @@ class State : public IState {
         : player(player)
         , status(status)
     {};
-    ~State() override;
+    ~State() override {}; // nothing to take care of...
 };
 
 class Chess : public IChess {
