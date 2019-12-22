@@ -1,6 +1,7 @@
 #ifndef COLLAPSE_CORE_PIECES_H_
 #define COLLAPSE_CORE_PIECES_HPP
 
+#include "collapse/core/base.h"
 #include "collapse/core.h"
 
 namespace collapse {
