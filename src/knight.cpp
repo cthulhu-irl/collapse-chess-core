@@ -5,7 +5,7 @@ namespace collapse {
 namespace core {
 
 bool
-Knight::isValidMove(const IPoint &src, const IPoint &dst) override
+Knight::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
 {
 	//
 }

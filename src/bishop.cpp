@@ -5,7 +5,7 @@ namespace collapse {
 namespace core {
 
 bool
-Bishop::isValidMove(const IPoint &src, const IPoint &dst) override
+Bishop::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
 {
 	//
 }

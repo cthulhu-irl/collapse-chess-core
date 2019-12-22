@@ -5,7 +5,7 @@ namespace collapse {
 namespace core {
 
 bool
-Queen::isValidMove(const IPoint &src, const IPoint &dst) override
+Queen::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
 {
 	//
 }

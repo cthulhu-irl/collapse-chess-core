@@ -5,7 +5,7 @@ namespace collapse {
 namespace core {
 
 bool
-Pawn::isValidMove(const IPoint &src, const IPoint &dst) override
+Pawn::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
 {
 	//
 }

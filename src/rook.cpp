@@ -5,7 +5,7 @@ namespace collapse {
 namespace core {
 
 bool
-Rook::isValidMove(const IPoint &src, const IPoint &dst) override
+Rook::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
 {
 	//
 }

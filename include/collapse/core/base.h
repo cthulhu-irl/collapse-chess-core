@@ -47,7 +47,7 @@ class IPoint {
 class IPiece {
  public:
     explicit IPiece(Type type);
-    virtual bool isValidMove(const IPoint &src, const IPoint &dst) = 0;
+    virtual bool isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) = 0;
     virtual Type getType() = 0;
 };
 
