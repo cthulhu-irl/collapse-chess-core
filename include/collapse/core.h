@@ -43,6 +43,7 @@ class Map : public IMap {
     explicit Map(std::array<std::array<IPiece, 8>, 8> &&init_table);
     Map(std::initializer_list<std::array<PieceRole, 8>> init_table);
     std::array<IPiece, 8> &operator[](std::size_t index) override;
+    ~Map();
 };
 
 class Board : public IBoard {
