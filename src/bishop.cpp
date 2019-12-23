@@ -15,7 +15,7 @@ Bishop::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) overr
         return false;
 
     // check if nothing between
-    char x_step = delta_x & 0x71, y_step = delta_y & 0x71;
+    char x_step = delta_x & 0x81, y_step = delta_y & 0x81;
     char x_end = dst.getX(), y_end = dst.getY();
 
     for (char x = src.getX() + x_step - 1, y = src.getY() + y_step - 1;

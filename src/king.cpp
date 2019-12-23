@@ -19,7 +19,7 @@ King::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) overrid
                 return false;
 
             // check if there aren't anything between
-            char stepper = (abs(delta_x) + 1) - delta_x; // or delta_x & 0x70
+            char stepper = (abs(delta_x) + 1) - delta_x; // or delta_x & 0x81
             if (map[dst.getY()][dst.getX() - stepper  ] == nullptr) return false;
             if (map[dst.getY()][dst.getX() - stepper*2] == nullptr) return false;
 
