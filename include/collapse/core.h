@@ -57,6 +57,9 @@ class Board : public IBoard {
     bool move(const IPoint &src, const IPoint &dst) override;
     bool upgradeRankPawn(PieceRole role) override;
     bool isValidMove(const IPoint &src, const IPoint &dst) override;
+
+ private:
+    Status checkup();
 };
 
 class State : public IState {
