@@ -59,7 +59,7 @@ class Board : public IBoard {
     bool isValidMove(const IPoint &src, const IPoint &dst) override;
 
  private:
-    Status checkup();
+    Status check_map(const Map &map, bool assign=false);
 };
 
 class State : public IState {
