@@ -53,7 +53,7 @@ class Board : public IBoard {
 
  public:
     explicit Board(Map &map);
-    ~Board() override;
+    ~Board();
     bool move(const IPoint &src, const IPoint &dst) override;
     bool upgradeRankPawn(PieceRole role) override;
     bool isValidMove(const IPoint &src, const IPoint &dst) override;
@@ -71,7 +71,6 @@ class State : public IState {
         : player(player)
         , status(status)
     {};
-    ~State() override {}; // nothing to take care of...
 };
 
 class Chess : public IChess {

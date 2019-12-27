@@ -37,7 +37,6 @@ enum class PieceRole {
 /// a tile/block's coordinates in (x, y) form
 class IPoint {
  public:
-    IPoint(unsigned char x, unsigned char y);
     virtual unsigned char getX() = 0;
     virtual unsigned char getY() = 0;
 };
@@ -46,14 +45,12 @@ class IPoint {
 /// is valid or not, also its color type
 class IPiece {
  public:
-    explicit IPiece(Type type);
     virtual bool isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) = 0;
     virtual Type getType() = 0;
 };
 
 class IPlayer {
  public:
-    IPlayer();
     explicit IPlayer(Type type);
     virtual Type getType() = 0;
     virtual PieceRole getRole() = 0;
@@ -61,7 +58,6 @@ class IPlayer {
 
 class IMap {
  public:
-    IMap();
     explicit IMap(std::array<std::array<IPiece, 8>, 8> &&init_table);
     IMap(std::initializer_list<std::array<PieceRole, 8>> init_table);
     virtual std::array<IPiece, 8> &operator[](std::size_t index) = 0;
@@ -69,8 +65,6 @@ class IMap {
 
 class IBoard {
  public:
-    explicit IBoard(IMap &map);
-    virtual ~IBoard() = 0;
     virtual bool move(const IPoint &src, const IPoint &dst);
     virtual bool upgradeRankPawn(PieceRole role);
     virtual bool isValidMove(const IPoint &src, const IPoint &dst);
@@ -80,26 +74,18 @@ class IState {
  public:
     IPlayer &player;
     Status status;
-
-    IState();
-    IState(IPlayer &player, Status status);
-    virtual ~IState() = 0;
 };
 
 class IChess {
  public:
-    IChess(const IPlayer &white,
-           const IPlayer &black,
-           const IMap &map);
+    virtual const IState &move(const IPlayer &player,
+                               const IPoint &src,
+                               const IPoint &dst);
+    virtual const IState &rank(const IPlayer &player, PieceRole role);
+    virtual const IState &fold(const IPlayer &player);
+    virtual const IState &reset();
 
-    const IState &move(const IPlayer &player,
-                       const IPoint &src,
-                       const IPoint &dst);
-    const IState &rank(const IPlayer &player, PieceRole role);
-    const IState &fold(const IPlayer &player);
-    const IState &reset();
-
-    const IState &getState();
+    virtual const IState &getState();
 };
 
 }  // namespace core
