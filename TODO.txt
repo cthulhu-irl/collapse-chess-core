@@ -1,0 +1,39 @@
+ * high priority
+    * Makefile
+        + build
+        + clean
+        - lint
+
+    * fix compile-time issues
+        + errors
+        - warnings
+        - extra warnings
+
+ - fixes
+    + point should range 0-7 rather than 1-8
+      due to indexing headaches
+
+    - either remove brace initializer constructor from Map (and IMap)
+      or fix it to get array<pair<Type, PieceRole>, 8> instead
+
+    - use simple if-else (inline) rather than binary techniques
+      for step way detection
+
+    - fix midway looper in Queen, Bishop and Rook
+
+ - implement in order
+    + Point
+    - Player
+    - Map
+    - Pieces
+        - Knight
+        - Bishop
+        - Rook
+        - Queen
+        - Pawn
+        - King
+
+    - State
+    - Board
+    - Chess
+

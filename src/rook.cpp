@@ -5,8 +5,11 @@ namespace collapse {
 namespace core {
 
 bool
-Rook::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
+Rook::isValidMove(const IMap<IPiece> &map,
+                  const IPoint &src,
+                  const IPoint &dst) const
 {
+    /*
 	char delta_x = dst.getX() - src.getX();
     char delta_y = dst.getY() - src.getY();
 
@@ -25,6 +28,9 @@ Rook::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) overrid
         if (map[y][x] != nullptr)
             return false;
     }
+    */
+
+    return true;
 }
 
 }  // namespace core

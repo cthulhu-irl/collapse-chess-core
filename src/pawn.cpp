@@ -5,20 +5,23 @@ namespace collapse {
 namespace core {
 
 bool
-Pawn::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
+Pawn::isValidMove(const IMap<IPiece> &map,
+                  const IPoint &src,
+                  const IPoint &dst) const
 {
     char delta_x = dst.getX() - src.getX();
     char delta_y = dst.getY() - dst.getY();
     
-    IPiece *piece_dst = map[dst.getY()-1][dst.getX()-1];
-    IPiece *piece_src = map[src.getY()-1][src.getY()-1];
+    IPiece *piece_dst = map(dst.getX(), dst.getY());
+    IPiece *piece_src = map(src.getX(), src.getY());
 
-    char forward_step = (piece_src->getType() == Type.WHITE) ? 1 : -1;
+    char forward_step = (piece_src->getType() == Type::WHITE) ? 1 : -1;
 
 	// check if it's a diagonal attack movement
     if (abs(delta_x) == 1 && delta_y == forward_step)
     {
-        if (piece_dst != nullptr && piece_dst->getType() != piece_src->getType())
+        if (piece_dst != nullptr
+                && piece_dst->getType() != piece_src->getType())
             return true;
 
         return false;
@@ -37,9 +40,10 @@ Pawn::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) overrid
         return true;
 
     // check if it's the first double forward intial move
-    if (delta_y == 2 * forward_step && src.getY() == (forward_step == 1 ? 2 : 6))
+    if (delta_y == 2 * forward_step
+            && src.getY() == ((forward_step == 1) ? 2 : 6))
         // check if nothing between
-        if (map[dst.getY() + 2*forward_step - 1][dst.getX()-1] == nullptr)
+        if (map(dst.getX(), dst.getY() + 2*forward_step) == nullptr)
             return true;
 
     return false;
@@ -47,4 +51,3 @@ Pawn::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) overrid
 
 }  // namespace core
 }  // namespace collapse
-

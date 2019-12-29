@@ -37,43 +37,42 @@ enum class PieceRole {
 /// a tile/block's coordinates in (x, y) form
 class IPoint {
  public:
-    virtual unsigned char getX() = 0;
-    virtual unsigned char getY() = 0;
+    virtual char getX() const = 0;
+    virtual char getY() const = 0;
+};
+
+class IPlayer {
+ public:
+    virtual Type getType() const = 0;
+    virtual PieceRole getRole() const = 0;
+};
+
+template<typename T>
+class IMap {
+ public:
+    virtual T *operator()(std::size_t x, std::size_t y) const = 0;
 };
 
 /// a chess piece responsible for satisfying if a move
 /// is valid or not, also its color type
 class IPiece {
  public:
-    virtual bool isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) = 0;
-    virtual Type getType() = 0;
-};
-
-class IPlayer {
- public:
-    explicit IPlayer(Type type);
-    virtual Type getType() = 0;
-    virtual PieceRole getRole() = 0;
-};
-
-class IMap {
- public:
-    explicit IMap(std::array<std::array<IPiece, 8>, 8> &&init_table);
-    IMap(std::initializer_list<std::array<PieceRole, 8>> init_table);
-    virtual std::array<IPiece, 8> &operator[](std::size_t index) = 0;
+    virtual bool isValidMove(const IMap<IPiece> &map,
+                             const IPoint &src,
+                             const IPoint &dst) const = 0;
+    virtual Type getType() const = 0;
+    virtual PieceRole getRole() const = 0;
 };
 
 class IBoard {
  public:
     virtual bool move(const IPoint &src, const IPoint &dst);
     virtual bool upgradeRankPawn(PieceRole role);
-    virtual bool isValidMove(const IPoint &src, const IPoint &dst);
+    virtual bool isValidMove(const IPoint &src, const IPoint &dst) const;
+    virtual IPoint *getLastRankPawn() const;
 };
 
 class IState {
- public:
-    IPlayer &player;
-    Status status;
 };
 
 class IChess {
@@ -85,6 +84,9 @@ class IChess {
     virtual const IState &fold(const IPlayer &player);
     virtual const IState &reset();
 
+    virtual bool isValidMove(const IPlayer &player,
+                             const IPoint &src,
+                             const IPoint &dst) const;
     virtual const IState &getState();
 };
 

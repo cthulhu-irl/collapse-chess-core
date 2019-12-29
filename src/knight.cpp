@@ -1,16 +1,20 @@
-#include "collapse/core.h"
+#include "collapse/core/base.h"
 #include "collapse/core/pieces.h"
+#include "collapse/core.h"
 
 namespace collapse {
 namespace core {
 
 bool
-Knight::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
+Knight::isValidMove(const IMap<IPiece> &map,
+                    const IPoint &src,
+                    const IPoint &dst) const
 {
     char delta_x = dst.getX() - src.getX();
     char delta_y = dst.getY() - src.getY();
 
-    // check the L case, either x or y must be 1 or 2, but not the same
+    // check the L case,
+    // either x or y must be 1 or 2, but not the same
     if (abs(delta_x) == 1 && abs(delta_y) == 2)
         return true;
 
@@ -22,4 +26,3 @@ Knight::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) overr
 
 }  // namespace core
 }  // namespace collapse
-

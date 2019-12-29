@@ -5,10 +5,14 @@ namespace collapse {
 namespace core {
 
 bool
-King::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) override
+King::isValidMove(const IMap<IPiece> &map,
+                  const IPoint &src,
+                  const IPoint &dst) const
 {
+    /*
     // is it a castling move?
-    if (src.getX() == 5 && (src.getY() % 8) <= 1)  // check if king is in initial state
+    // check if king is in its initial point
+    if (src.getX() == 5 && (src.getY() % 8) <= 1)
     {
         // check if selected destination is next to an initial rook
         char delta_x = dst.getX() - src.getX();
@@ -30,6 +34,7 @@ King::isValidMove(const IMap &map, const IPoint &src, const IPoint &dst) overrid
     // OR is it only one block away?
     if ((dst.getX() - src.getX()) == 1 || (dst.getY() - src.getY()) == 1)
         return true;
+    */
 
     return false;
 }

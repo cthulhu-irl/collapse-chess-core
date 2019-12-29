@@ -9,22 +9,13 @@ namespace collapse {
 namespace core {
 
 class Point : public IPoint {
-    unsigned char x;
-    unsigned char y;
+    char x;
+    char y;
 
  public:
-    Point(unsigned char x, unsigned char y);
-    unsigned char getX() override;
-    unsigned char getY() override;
-};
-
-class Piece : public IPiece {
-    const Type type;
-    const PieceRole role;
-
- public:
-    Type getType() { return type; }
-    PieceRole getRole() { return role; }
+    Point(char x, char y);
+    virtual char getX() const; // override;
+    virtual char getY() const; // override;
 };
 
 class Player : public IPlayer {
@@ -32,34 +23,35 @@ class Player : public IPlayer {
 
  public:
     explicit Player(Type type) : type(type) {};
-    Type getType() { return type; };
+    Type getType() const { return type; };
 };
 
-class Map : public IMap {
-    std::array<std::array<IPiece, 8>, 8> *table;
+template<typename T>
+class Map : public IMap<T> {
+    std::array<std::array<T, 8>, 8> *table;
 
  public:
     Map();
-    explicit Map(std::array<std::array<IPiece, 8>, 8> &&init_table);
-    Map(std::initializer_list<std::array<PieceRole, 8>> init_table);
-    std::array<IPiece, 8> &operator[](std::size_t index) override;
+    explicit Map(std::array<std::array<T, 8>, 8> &&init_table);
+    T *operator()(std::size_t x, std::size_t y) const override;
     ~Map();
 };
 
 class Board : public IBoard {
-    Map map;
+    Map<IPiece> map;
     Status status;
     Point last_rank_pawn;
+    bool has_last_rank_pawn;
 
  public:
-    explicit Board(Map &map);
-    ~Board();
+    Board(Map<IPiece> &map);
     bool move(const IPoint &src, const IPoint &dst) override;
     bool upgradeRankPawn(PieceRole role) override;
-    bool isValidMove(const IPoint &src, const IPoint &dst) override;
+    bool isValidMove(const IPoint &src, const IPoint &dst) const override;
+    IPoint *getLastRankPawn() const override;
 
  private:
-    Status check_map(const Map &map, Type self_type, bool assign=false);
+    Status check_map(const IMap<IPiece> &map, Type self_type) const;
 };
 
 class State : public IState {
@@ -70,7 +62,7 @@ class State : public IState {
     State(IPlayer &player, Status status)
         : player(player)
         , status(status)
-    {};
+    {}
 };
 
 class Chess : public IChess {
@@ -80,21 +72,25 @@ class Chess : public IChess {
  public:
     IPlayer &player_black;
     IPlayer &player_white;
-    IMap &map_init;
+    IMap<IPiece> &map_init;
 
-    Chess(const IPlayer &white,
-          const IPlayer &black,
-          const IMap &map);
+    Chess(IPlayer &white, IPlayer &black, Map<IPiece> &map);
 
     const IState &move(const IPlayer &player,
                        const IPoint &src,
-                       const IPoint &dst);
-    const IState &rank(const IPlayer &player, PieceRole role);
-    const IState &fold(const IPlayer &player);
+                       const IPoint &dst) override;
+    const IState &rank(const IPlayer &player, PieceRole role) override;
+    const IState &fold(const IPlayer &player) override;
     const IState &reset();
 
-    const IState &getState();
+    bool isValidMove(const IPlayer &player,
+                     const IPoint &src,
+                     const IPoint &dst) const;
+    const IState &getState() const;
 };
+
+// explicit instantiation of necessary template types
+template class Map<IPiece>;
 
 }  // namespace core
 }  // namespace collapse

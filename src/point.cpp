@@ -6,7 +6,7 @@ using namespace core;
 /// Take `x` and `y` as coordinates, and save them as 0..7 numbers
 /// `x` can be 1..8 or a..h as in chess board
 /// `y` can only be 1..8
-Point::Point(unsigned char x, unsigned char y)
+Point::Point(char x, char y)
 {
     // 1..8 range
     if (1 <= x && x <= 8)
@@ -29,14 +29,14 @@ Point::Point(unsigned char x, unsigned char y)
         throw "PointException should be replaced in here";
 }
 
-unsigned char
-Point::getX() override
+char
+Point::getX() const
 {
     return this->x;
 }
 
-unsigned char
-Point::getY() override
+char
+Point::getY() const
 {
     return this->y;
 }
