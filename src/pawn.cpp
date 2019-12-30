@@ -15,7 +15,8 @@ Pawn::isValidMove(const IMap<IPiece> &map,
     IPiece *piece_dst = map(dst.getX(), dst.getY());
     IPiece *piece_src = map(src.getX(), src.getY());
 
-    char forward_step = (piece_src->getType() == Type::WHITE) ? 1 : -1;
+    char forward_step = (piece_src->getType() == Type::WHITE)
+                        ? 1 : -1;
 
 	// check if it's a diagonal attack movement
     if (abs(delta_x) == 1 && delta_y == forward_step)
@@ -39,9 +40,9 @@ Pawn::isValidMove(const IMap<IPiece> &map,
     if (delta_y == forward_step)
         return true;
 
-    // check if it's the first double forward intial move
-    if (delta_y == 2 * forward_step
-            && src.getY() == ((forward_step == 1) ? 2 : 6))
+    // check if it's the initial double step move
+    if (abs(delta_y) == 2 // && src.getY() == ((7+2*forward_step)%7)
+            && src.getY() == ((forward_step == 1) ? 1 : 6))
         // check if nothing between
         if (map(dst.getX(), dst.getY() + 2*forward_step) == nullptr)
             return true;

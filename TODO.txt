@@ -32,7 +32,7 @@
         + Bishop
         + Rook
         + Queen
-        - Pawn
+        + Pawn
         - King
 
     + State
