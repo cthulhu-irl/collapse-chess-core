@@ -30,8 +30,8 @@
     * Pieces
         + Knight
         + Bishop
-        - Rook
-        - Queen
+        + Rook
+        + Queen
         - Pawn
         - King
 
