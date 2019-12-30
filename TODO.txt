@@ -21,10 +21,12 @@
 
     - fix midway looper in Queen, Bishop and Rook
 
- - implement in order
+    - add virtual destructors to all interfaces and implementations
+
+ * implement in order
     + Point
-    - Player
-    - Map
+    + Player
+    * Map
     - Pieces
         - Knight
         - Bishop
@@ -33,7 +35,7 @@
         - Pawn
         - King
 
-    - State
+    + State
     - Board
     - Chess
 

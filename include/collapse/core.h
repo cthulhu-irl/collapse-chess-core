@@ -28,13 +28,19 @@ class Player : public IPlayer {
 
 template<typename T>
 class Map : public IMap<T> {
-    std::array<std::array<T, 8>, 8> *table;
+    std::array<std::array<T*, 8>, 8> *table;
 
  public:
     Map();
-    explicit Map(std::array<std::array<T, 8>, 8> &&init_table);
-    T *operator()(std::size_t x, std::size_t y) const override;
+    explicit Map(const std::array<std::array<T*, 8>, 8> &init_table);
+    Map(const Map<T> &other);
+    Map<T> &operator=(const Map<T> &other);
     ~Map();
+
+    T *get(std::size_t x, std::size_t y) const override;
+    T *set(std::size_t x, std::size_t y, T *ptr) override;
+    T *delete_at(std::size_t x, std::size_t y) override;
+    T *operator()(std::size_t x, std::size_t y) const override;
 };
 
 class Board : public IBoard {

@@ -50,6 +50,9 @@ class IPlayer {
 template<typename T>
 class IMap {
  public:
+    virtual T *get(std::size_t x, std::size_t y) const = 0;
+    virtual T *set(std::size_t x, std::size_t y, T *ptr) = 0;
+    virtual T *delete_at(std::size_t x, std::size_t y) = 0;
     virtual T *operator()(std::size_t x, std::size_t y) const = 0;
 };
 
@@ -62,6 +65,7 @@ class IPiece {
                              const IPoint &dst) const = 0;
     virtual Type getType() const = 0;
     virtual PieceRole getRole() const = 0;
+    ~IPiece() = default;
 };
 
 class IBoard {
