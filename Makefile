@@ -31,5 +31,5 @@ build: $(TARGET)
 
 .PHONY: clean
 clean:
-	rm -r $(BUILDDIR)
-	rm -r $(TARGET)
+	rm -rf $(BUILDDIR)
+	rm -rf $(TARGET)
