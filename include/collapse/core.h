@@ -55,9 +55,10 @@ class Board : public IBoard {
     bool upgradeRankPawn(PieceRole role) override;
     bool isValidMove(const IPoint &src, const IPoint &dst) const override;
     IPoint *getLastRankPawn() const override;
+    Status getStatus() const override;
 
  private:
-    Status check_map(const IMap<IPiece> &map, Type self_type) const;
+    Status check_map(const IMap<IPiece> &map, Type side) const;
 };
 
 class State : public IState {
