@@ -33,7 +33,7 @@
         + Rook
         + Queen
         + Pawn
-        - King
+        + King
 
     + State
     - Board
