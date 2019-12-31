@@ -72,7 +72,8 @@ Map<T>::Map(const Map<T> &other) : Map()
 
 /// copy assignment operator
 template<typename T>
-Map<T> &Map<T>::operator=(const Map<T> &other)
+Map<T> &
+Map<T>::operator=(const Map<T> &other)
 {
     // FIXME: use a hard copy
     /*
@@ -109,7 +110,8 @@ Map<T>::~Map()
 /// This function (operator overload) return a row of table
 /// as a mutable lvalue.
 template<typename T>
-T *Map<T>::operator()(std::size_t x, std::size_t y) const
+T *
+Map<T>::operator()(std::size_t x, std::size_t y) const
 {
     return this->get(x, y);
 }
@@ -127,7 +129,8 @@ T *Map<T>::get(std::size_t x, std::size_t y) const
 
 /// set the cell at x,y position to ptr if table exists.
 template<typename T>
-T *Map<T>::set(std::size_t x, std::size_t y, T *ptr)
+T *
+Map<T>::set(std::size_t x, std::size_t y, T *ptr)
 {
     // check if table exists
     if (!this->table)
@@ -153,7 +156,8 @@ T *Map<T>::set(std::size_t x, std::size_t y, T *ptr)
 /// delete the cell at x,y position by freeing its memory
 /// and then set it to nullptr
 template<typename T>
-T *Map<T>::delete_at(std::size_t x, std::size_t y)
+T *
+Map<T>::delete_at(std::size_t x, std::size_t y)
 {
     // check if table exists
     if (!this->table)
