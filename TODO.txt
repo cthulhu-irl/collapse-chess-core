@@ -1,5 +1,5 @@
  * high priority
-    * Makefile
+    + Makefile
         + build
         + clean
 
@@ -8,25 +8,27 @@
         - warnings
         - extra warnings
 
- * fixes
+ + fixes
     + point should range 0-7 rather than 1-8
       due to indexing headaches
 
-    - either remove brace initializer constructor from Map (and IMap)
+    + either remove brace initializer constructor from Map (and IMap)
       or fix it to get array<pair<Type, PieceRole>, 8> instead
 
-    - use simple if-else (inline) rather than binary techniques
+    + use simple if-else (inline) rather than binary techniques
       for step way detection
 
-    - fix midway looper in Queen, Bishop and Rook
+    + fix midway looper in Queen, Bishop and Rook
 
  * implement in order
     + Point
     + Player
-    * Map
+    + Map
         + implement copy constructor
         + implement copy assignment operator
         + add replace method
+        + implement destructor
+
     + Pieces
         + IPiece
             + add pure virtual clone method

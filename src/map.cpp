@@ -107,8 +107,24 @@ Map<T>::operator=(const Map<T> &other)
 template<typename T>
 Map<T>::~Map()
 {
+    if (!this->table)
+        return;
+
     // free all cells and set them to nullptr after free
+    T *cell = nullptr; // maybe T ** for optimizations...
+    for (std::size_t y=0; y < 8; y++) {
+        for (std::size_t x=0; x < 8; x++) {
+            cell = (*this->table)[y][x];
+            if (cell) {
+                delete cell;
+                (*this->table)[y][x] = nullptr;
+            }
+        }
+    }
+
     // free the table and set it to nullptr
+    delete this->table;
+    this->table = nullptr;
 }
 
 /// A better way to access the elements.
