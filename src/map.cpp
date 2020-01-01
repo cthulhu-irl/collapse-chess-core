@@ -75,25 +75,20 @@ template<typename T>
 Map<T> &
 Map<T>::operator=(const Map<T> &other)
 {
-    // FIXME: use a hard copy
-    /*
     if (this == &other)
         return *this;
 
     T *cell = nullptr;
     for (std::size_t y=0; y < 8; y++) {
         for (std::size_t x=0; x < 8; x++) {
-            if ((*other.table)[y][x] != nullptr)
-                // TODO: use an allocation technique for
-                //       abstract class allocations and
-                //       derived class copy.
-                cell = ...;
+            cell = (*other.table)[y][x];
+
+            if (cell != nullptr)
+                cell = cell->clone();
 
             (*this->table)[y][x] = cell;
-            cell = nullptr;
         }
     }
-    */
 
     return *this;
 }
@@ -119,7 +114,8 @@ Map<T>::operator()(std::size_t x, std::size_t y) const
 /// returns the cell at x,y position if the table exists,
 /// otherwise it returns nullptr.
 template<typename T>
-T *Map<T>::get(std::size_t x, std::size_t y) const
+T *
+Map<T>::get(std::size_t x, std::size_t y) const
 {
     if (this->table)
         return (*this->table)[y][x];
