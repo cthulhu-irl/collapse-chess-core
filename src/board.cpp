@@ -5,11 +5,11 @@
 namespace collapse {
 namespace core {
 
-Board::Board(Map<IPiece> &map) : last_rank_pawn(0, 0)
+Board::Board(Map<IPiece> &map)
 {
     this->map = map;
     this->status = Status::TURN;
-    this->has_last_rank_pawn = false;
+    this->last_rank_pawn = nullptr;
 }
 
 bool
@@ -17,7 +17,7 @@ Board::move(const IPoint &src, const IPoint &dst)
 {
     // check if it's a valid move
     // replace piece at destination with piece at src
-    return false;
+    return true;
 }
 
 bool
@@ -59,13 +59,10 @@ Board::check_map(const IMap<IPiece> &map, Type side) const
     return Status::TURN;
 }
 
-const IPoint &
+const IPoint *
 Board::getLastRankPawn() const
 {
-    if (this->has_last_rank_pawn)
-        return this->last_rank_pawn;
-
-    return nullptr;
+    return this->last_rank_pawn;
 }
 
 Status

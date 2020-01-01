@@ -24,7 +24,9 @@
     - add virtual destructors to all interfaces and implementations
 
  * implement in order
-    + Point
+    * Point
+        - add copy constructor and assignment operator
+        - add default destructor
     + Player
     * Map
         - add replace method
@@ -37,7 +39,14 @@
         + King
 
     + State
-    - Board
+    * Board
+        + constructor
+        + getter methods
+        * move method
+        * upgradeRankPawn method
+        * isValidMove method
+        * check_map method
+        + set last_rank_pawn as pointer rather than reference
     - Chess
 
  - Exception Classes

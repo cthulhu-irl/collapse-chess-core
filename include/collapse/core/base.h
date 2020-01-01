@@ -73,7 +73,7 @@ class IBoard {
     virtual bool move(const IPoint &src, const IPoint &dst);
     virtual bool upgradeRankPawn(PieceRole role);
     virtual bool isValidMove(const IPoint &src, const IPoint &dst) const;
-    virtual const IPoint &getLastRankPawn() const;
+    virtual const IPoint *getLastRankPawn() const;
     virtual Status getStatus() const;
 };
 

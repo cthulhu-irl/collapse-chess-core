@@ -46,15 +46,14 @@ class Map : public IMap<T> {
 class Board : public IBoard {
     Map<IPiece> map;
     Status status;
-    IPoint &last_rank_pawn;
-    bool has_last_rank_pawn;
+    IPoint *last_rank_pawn;
 
  public:
     Board(Map<IPiece> &map);
     bool move(const IPoint &src, const IPoint &dst) override;
     bool upgradeRankPawn(PieceRole role) override;
     bool isValidMove(const IPoint &src, const IPoint &dst) const override;
-    const IPoint &getLastRankPawn() const override;
+    const IPoint *getLastRankPawn() const override;
     Status getStatus() const override;
 
  private:
