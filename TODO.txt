@@ -24,8 +24,8 @@
     + Point
     + Player
     * Map
-        - implement copy constructor
-        - implement copy assignment operator
+        + implement copy constructor
+        + implement copy assignment operator
         - add replace method
     + Pieces
         + IPiece

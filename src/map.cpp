@@ -67,7 +67,17 @@ Map<T>::Map(const std::array<std::array<T*, 8>, 8> &init_table)
 template<typename T>
 Map<T>::Map(const Map<T> &other) : Map()
 {
-    // gonna be the same as copy assignment operator...
+    T *cell = nullptr;
+    for (std::size_t y=0; y < 8; y++) {
+        for (std::size_t x=0; x < 8; x++) {
+            cell = (*other.table)[y][x];
+
+            if (cell != nullptr)
+                cell = cell->clone();
+
+            (*this->table)[y][x] = cell;
+        }
+    }
 }
 
 /// copy assignment operator
