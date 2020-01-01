@@ -65,7 +65,7 @@ class IPiece {
                              const IPoint &dst) const = 0;
     virtual Type getType() const = 0;
     virtual PieceRole getRole() const = 0;
-    ~IPiece() = default;
+    virtual IPiece *clone() const = 0;
 };
 
 class IBoard {

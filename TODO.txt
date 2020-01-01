@@ -2,14 +2,13 @@
     * Makefile
         + build
         + clean
-        - lint
 
     * fix compile-time issues
         + errors
         - warnings
         - extra warnings
 
- - fixes
+ * fixes
     + point should range 0-7 rather than 1-8
       due to indexing headaches
 
@@ -21,22 +20,26 @@
 
     - fix midway looper in Queen, Bishop and Rook
 
-    - add virtual destructors to all interfaces and implementations
-
  * implement in order
-    * Point
-        + add copy constructor and assignment operator
-        + add default destructor
+    + Point
     + Player
     * Map
+        - implement copy constructor
+        - implement copy assignment operator
         - add replace method
     + Pieces
+        + IPiece
+            + add pure virtual clone method
+
         + Knight
         + Bishop
         + Rook
         + Queen
         + Pawn
         + King
+
+        + implement clone to return a dynamically allocated copy of
+          itself
 
     + State
     * Board

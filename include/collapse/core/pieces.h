@@ -19,6 +19,8 @@ class King : public IPiece {
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
+
+    IPiece *clone() const override { return new King(*this); }
 };
 
 class Queen : public IPiece {
@@ -33,6 +35,8 @@ class Queen : public IPiece {
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
+
+    IPiece *clone() const override { return new Queen(*this); }
 };
 
 class Bishop : public IPiece {
@@ -47,6 +51,8 @@ class Bishop : public IPiece {
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
+
+    IPiece *clone() const override { return new Bishop(*this); }
 };
 
 class Knight : public IPiece {
@@ -61,6 +67,8 @@ class Knight : public IPiece {
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
+
+    IPiece *clone() const override { return new Knight(*this); }
 };
 
 class Rook : public IPiece {
@@ -75,6 +83,8 @@ class Rook : public IPiece {
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
+
+    IPiece *clone() const override { return new Rook(*this); }
 };
 
 class Pawn : public IPiece {
@@ -89,6 +99,8 @@ class Pawn : public IPiece {
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
+
+    IPiece *clone() const override { return new Pawn(*this); }
 };
 
 }  // namespace core
