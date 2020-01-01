@@ -182,5 +182,31 @@ Map<T>::delete_at(std::size_t x, std::size_t y)
     return nullptr;
 }
 
+template<typename T>
+T *
+Map<T>::move_from_to(std::size_t x1, std::size_t y1,
+                     std::size_t x2, std::size_t y2,
+                     bool swap)
+{
+    // check if table exists
+    if (!this->table)
+        return nullptr;
+
+    T *cell1 = (*this->table)[y1][x1];
+    T *cell2 = (*this->table)[y2][x2];
+
+    (*this->table)[y2][x2] = cell1;
+
+    if (!swap) {
+        // free the memory, assign the nullptr
+        delete cell2;
+        cell2 = nullptr;
+    }
+
+    (*this->table)[y1][x1] = cell2;
+
+    return cell1; // return destination
+}
+
 }  // namespace core
 }  // namespace collapse

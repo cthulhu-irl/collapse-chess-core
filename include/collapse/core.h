@@ -40,6 +40,9 @@ class Map : public IMap<T> {
     T *get(std::size_t x, std::size_t y) const override;
     T *set(std::size_t x, std::size_t y, T *ptr) override;
     T *delete_at(std::size_t x, std::size_t y) override;
+    T *move_from_to(std::size_t x1, std::size_t y1,
+                    std::size_t x2, std::size_t y2,
+                    bool swap=false) override;
     T *operator()(std::size_t x, std::size_t y) const override;
 };
 

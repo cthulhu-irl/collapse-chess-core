@@ -53,6 +53,9 @@ class IMap {
     virtual T *get(std::size_t x, std::size_t y) const = 0;
     virtual T *set(std::size_t x, std::size_t y, T *ptr) = 0;
     virtual T *delete_at(std::size_t x, std::size_t y) = 0;
+    virtual T *move_from_to(std::size_t x1, std::size_t y1,
+                            std::size_t x2, std::size_t y2,
+                            bool swap=false) = 0;
     virtual T *operator()(std::size_t x, std::size_t y) const = 0;
 };
 

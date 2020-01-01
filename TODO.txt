@@ -26,7 +26,7 @@
     * Map
         + implement copy constructor
         + implement copy assignment operator
-        - add replace method
+        + add replace method
     + Pieces
         + IPiece
             + add pure virtual clone method
