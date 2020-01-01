@@ -27,7 +27,8 @@
     + Point
     + Player
     * Map
-    * Pieces
+        - add replace method
+    + Pieces
         + Knight
         + Bishop
         + Rook
