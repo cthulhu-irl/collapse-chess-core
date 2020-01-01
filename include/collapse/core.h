@@ -14,9 +14,6 @@ class Point : public IPoint {
 
  public:
     Point(char x, char y);
-    Point(const Point &other) = default;
-    Point &operator=(const Point &other) = default;
-
     virtual char getX() const; // override;
     virtual char getY() const; // override;
 };
