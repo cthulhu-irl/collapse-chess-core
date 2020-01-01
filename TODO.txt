@@ -1,4 +1,4 @@
- * high priority
+ * overall
     + Makefile
         + build
         + clean
@@ -47,7 +47,7 @@
     * Board
         + constructor
         + getter methods
-        * move method
+        + move method
         * upgradeRankPawn method
         * isValidMove method
         * check_map method

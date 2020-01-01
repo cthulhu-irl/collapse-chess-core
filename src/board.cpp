@@ -16,7 +16,13 @@ bool
 Board::move(const IPoint &src, const IPoint &dst)
 {
     // check if it's a valid move
+    if (!this->isValidMove(src, dst))
+        return false;
+
     // replace piece at destination with piece at src
+    this->map.move_from_to(src.getX(), src.getY(),
+                               dst.getX(), dst.getY(), false);
+
     return true;
 }
 
@@ -25,7 +31,7 @@ Board::upgradeRankPawn(PieceRole role)
 {
     // check if last_rank_pawn points to a pawn
     // check if valid role, if so... make correspondig piece
-    // replace piece with new piece (IMap::replace)
+    // set the the new piece in map
     // unset the has_last_rank_pawn and last_rank_pawn
     return true;
 }
@@ -38,6 +44,7 @@ Board::isValidMove(const IPoint &src, const IPoint &dst) const
     // make sure point src != point dst
     // make sure piece type src != piece type at dst
     // check if that piece supports it
+    // check if that move doesn't end up in CHECKMATE
     return true;
 }
 
