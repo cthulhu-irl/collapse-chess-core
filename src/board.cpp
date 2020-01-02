@@ -31,7 +31,7 @@ bool
 Board::upgradeRankPawn(PieceRole role)
 {
     // Q: think of FactoryPattern and dependency injection?
-    // A: LIMITED TIME!!! this is just a goddamn uni project!!!!
+    // A: LIMITED TIME!!! and this is just a goddamn uni project!!!!
     // C: thus... gonna be **dependent** to `Queen`, `Bishop`, etc...
     IPiece *piece = nullptr;
     Type ptype = Type::WHITE;
@@ -71,12 +71,28 @@ Board::upgradeRankPawn(PieceRole role)
 bool
 Board::isValidMove(const IPoint &src, const IPoint &dst) const
 {
-    // IPoint is not Point, x and y might be out of 0..7 range
+    // we'll need these later
+    IPiece *piece_src = this->map(src.getX(), src.getY());
+    IPiece *piece_dst = this->map(dst.getX(), dst.getY());
+
     // make sure piece at src != nullptr
+    if (!piece_src)
+        return false;
+
     // make sure point src != point dst
+    if (src != dst)
+        return false;
+
     // make sure piece type src != piece type at dst
+    if (piece_dst && piece_src->getType() == piece_dst->getType())
+        return false;
+
     // check if that piece supports it
-    // check if that move doesn't end up in CHECKMATE
+    if (!piece_src->isValidMove(this->map, src, dst))
+        return false;
+
+    // TODO check if that move doesn't end up in CHECKMATE
+
     return true;
 }
 
