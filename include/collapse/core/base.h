@@ -38,6 +38,7 @@ enum class PieceRole {
 class IPoint {
  public:
     virtual bool operator==(const IPoint &other) const;
+    virtual bool operator!=(const IPoint &other) const;
     virtual char getX() const = 0;
     virtual char getY() const = 0;
 };

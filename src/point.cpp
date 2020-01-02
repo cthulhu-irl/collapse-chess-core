@@ -36,6 +36,12 @@ Point::operator==(const IPoint &other) const
             && this->getY() == other.getY());
 }
 
+inline bool
+Point::operator!=(const IPoint &other) const
+{
+    return !(*this == other);
+}
+
 char
 Point::getX() const
 {

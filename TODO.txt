@@ -23,6 +23,7 @@
  * implement in order
     + Point
         + add operator== method
+        + add operator!= method
 
     + Player
     + Map

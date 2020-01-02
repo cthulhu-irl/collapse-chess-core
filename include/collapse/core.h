@@ -15,6 +15,7 @@ class Point : public IPoint {
  public:
     Point(char x, char y);
     bool operator==(const IPoint &other) const override;
+    bool operator!=(const IPoint &other) const override;
 
     char getX() const override;
     char getY() const override;
