@@ -42,9 +42,6 @@ Board::upgradeRankPawn(PieceRole role)
 
     piece = this->map.get(this->last_rank_pawn->getX(),
                             this->last_rank_pawn->getY());
-    if (!piece || piece->getRole() != PieceRole::PAWN) // :| || :o
-        return false;
-
     ptype = piece->getType();
 
     // check if valid role, if so... make correspondig piece
