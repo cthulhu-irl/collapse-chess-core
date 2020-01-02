@@ -24,7 +24,6 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
 	@echo -n " [$@] : "
 	$(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<
-	@echo
 
 .PHONY: build
 build: $(TARGET)
