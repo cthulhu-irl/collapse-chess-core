@@ -37,6 +37,7 @@ enum class PieceRole {
 /// a tile/block's coordinates in (x, y) form
 class IPoint {
  public:
+    virtual bool operator==(const IPoint &other) const;
     virtual char getX() const = 0;
     virtual char getY() const = 0;
 };

@@ -22,6 +22,8 @@
 
  * implement in order
     + Point
+        + add operator== method
+
     + Player
     + Map
         + implement copy constructor

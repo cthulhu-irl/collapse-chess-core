@@ -29,6 +29,13 @@ Point::Point(char x, char y)
         throw "PointException should be replaced in here";
 }
 
+inline bool
+Point::operator==(const IPoint &other) const
+{
+    return ((this->getX() == other.getX())
+            && this->getY() == other.getY());
+}
+
 char
 Point::getX() const
 {
