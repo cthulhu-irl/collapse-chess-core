@@ -1,3 +1,6 @@
+#include <memory>
+#include <vector>
+
 #include "collapse/core/base.h"
 
 #include "collapse/core.h"
@@ -99,8 +102,39 @@ Board::isValidMove(const IPoint &src, const IPoint &dst) const
 Status
 Board::check_map(const IMap<IPiece> &map, Type side) const
 {
-    // scan the map and save the points
+    Status ret = Status::TURN;
     // RANK: if the rows at y=0 and y=7 have any Pawn
+
+    // scan the map and save the points
+    std::vector<IPoint *> this_side;
+    std::vector<IPoint *> other_side;
+    IPoint *this_king = nullptr;
+    IPoint *other_king = nullptr;
+
+    for (size_t y=0; y < 8; y++) {
+        for (size_t x=0; x < 8; x++) {
+            IPiece *piece = this->map(x, y);
+            if (!piece)
+                continue;
+
+            IPoint *point = new Point(x, y);
+
+            if (piece->getType() == side) {
+                if (!this_king && piece->getRole() == PieceRole::KING)
+                    this_king = point;
+
+                this_side.push_back(point);
+            }
+            else {
+                if (!other_king && piece->getRole() == PieceRole::KING)
+                    other_king = point;
+
+                other_side.push_back(point);
+            }
+
+        }
+    }
+
     // CHECK & CHECKMATE:
     // if the king is NOT safe it can be check or checkmate
         // CHECKMATE
@@ -112,7 +146,7 @@ Board::check_map(const IMap<IPiece> &map, Type side) const
         // otherwise it's definitely a CHECK
     // STALEMATE:
         // no idea for STALEMATE for now...
-    return Status::TURN;
+    return ret;
 }
 
 const IPoint *
