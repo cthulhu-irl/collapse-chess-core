@@ -63,7 +63,7 @@ class Board : public IBoard {
     Status getStatus() const override;
 
  private:
-    Status check_map(const IMap<IPiece> &map, Type side) const;
+    Status checkMap(const IMap<IPiece> &map, Type side) const;
 };
 
 class State : public IState {

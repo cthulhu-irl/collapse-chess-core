@@ -100,7 +100,7 @@ Board::isValidMove(const IPoint &src, const IPoint &dst) const
 }
 
 Status
-Board::check_map(const IMap<IPiece> &map, Type side) const
+Board::checkMap(const IMap<IPiece> &map, Type side) const
 {
     Status ret = Status::TURN;
     // RANK: if the rows at y=0 and y=7 have any Pawn
