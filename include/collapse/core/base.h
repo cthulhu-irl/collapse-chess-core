@@ -77,8 +77,6 @@ class IBoard {
  public:
     virtual bool move(const IPoint &src, const IPoint &dst);
     virtual bool upgradeRankPawn(PieceRole role);
-    virtual bool redo();
-    virtual bool undo();
 
     virtual bool isValidMove(const IPoint &src, const IPoint &dst) const;
     virtual const IPoint *getLastRankPawn() const;
@@ -96,8 +94,6 @@ class IChess {
     virtual const IState &rank(const IPlayer &player, PieceRole role);
     virtual const IState &fold(const IPlayer &player);
     virtual const IState &reset();
-    virtual const IState &redo();
-    virtual const IState &undo();
 
     virtual bool isValidMove(const IPlayer &player,
                              const IPoint &src,
