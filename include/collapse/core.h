@@ -97,6 +97,8 @@ class Chess : public IChess {
     const IState &rank(const IPlayer &player, PieceRole role) override;
     const IState &fold(const IPlayer &player) override;
     const IState &reset();
+    const IState &redo();
+    const IState &undo();
 
     bool isValidMove(const IPlayer &player,
                      const IPoint &src,

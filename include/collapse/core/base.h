@@ -96,6 +96,8 @@ class IChess {
     virtual const IState &rank(const IPlayer &player, PieceRole role);
     virtual const IState &fold(const IPlayer &player);
     virtual const IState &reset();
+    virtual const IState &redo();
+    virtual const IState &undo();
 
     virtual bool isValidMove(const IPlayer &player,
                              const IPoint &src,
