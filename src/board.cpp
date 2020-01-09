@@ -33,9 +33,6 @@ Board::move(const IPoint &src, const IPoint &dst)
 bool
 Board::upgradeRankPawn(PieceRole role)
 {
-    // Q: think of FactoryPattern and dependency injection?
-    // A: LIMITED TIME!!! and this is just a goddamn uni project!!!!
-    // C: thus... gonna be **dependent** to `Queen`, `Bishop`, etc...
     IPiece *piece = nullptr;
     Type ptype = Type::WHITE;
 
@@ -69,6 +66,18 @@ Board::upgradeRankPawn(PieceRole role)
     this->last_rank_pawn = nullptr;
 
     return true;
+}
+
+bool
+Board::redo()
+{
+    return false;
+}
+
+bool
+Board::undo()
+{
+    return false;
 }
 
 bool

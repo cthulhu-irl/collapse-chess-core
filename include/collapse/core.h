@@ -58,6 +58,9 @@ class Board : public IBoard {
     Board(Map<IPiece> &map);
     bool move(const IPoint &src, const IPoint &dst) override;
     bool upgradeRankPawn(PieceRole role) override;
+    bool redo() override;
+    bool undo() override;
+
     bool isValidMove(const IPoint &src, const IPoint &dst) const override;
     const IPoint *getLastRankPawn() const override;
     Status getStatus() const override;
