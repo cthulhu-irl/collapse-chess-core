@@ -32,9 +32,17 @@
         + add replace method
         + implement destructor
 
+    - Movement (using Movement = std::pair<IPoint, IPoint>)
+    - StackList (template<typename T>)
+        - push
+        - pop
+        - next
+        - prev
+
     + Pieces
-        + IPiece
+        * IPiece
             + add pure virtual clone method
+            - add pure virtual genWalkPointList method
 
         + Knight
         + Bishop
@@ -47,6 +55,7 @@
           itself
 
     + State
+
     * Board
         + constructor
         + getter methods
@@ -55,7 +64,15 @@
         * isValidMove method
         * check_map method
         + set last_rank_pawn as pointer rather than reference
+        - add redo method
+        - add undo method
+
     - Chess
+        - implement (define) all current declarations
+        - add redo method
+        - add undo method
+
+    - DEFAULT_MAP (collapse/core.h)
 
  - Exception Classes
     - PointInvalidRange
