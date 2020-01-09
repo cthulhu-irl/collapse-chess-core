@@ -46,20 +46,6 @@ Chess::reset()
 }
 
 const IState &
-Chess::redo()
-{
-    //
-    return this->state;
-}
-
-const IState &
-Chess::undo()
-{
-    //
-    return this->state;
-}
-
-const IState &
 Chess::getState() const
 {
     //

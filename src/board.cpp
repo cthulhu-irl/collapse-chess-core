@@ -69,18 +69,6 @@ Board::upgradeRankPawn(PieceRole role)
 }
 
 bool
-Board::redo()
-{
-    return false;
-}
-
-bool
-Board::undo()
-{
-    return false;
-}
-
-bool
 Board::isValidMove(const IPoint &src, const IPoint &dst) const
 {
     // we'll need these later

@@ -58,8 +58,6 @@ class Board : public IBoard {
     Board(Map<IPiece> &map);
     bool move(const IPoint &src, const IPoint &dst) override;
     bool upgradeRankPawn(PieceRole role) override;
-    bool redo();
-    bool undo();
 
     bool isValidMove(const IPoint &src, const IPoint &dst) const override;
     const IPoint *getLastRankPawn() const override;
@@ -97,8 +95,6 @@ class Chess : public IChess {
     const IState &rank(const IPlayer &player, PieceRole role) override;
     const IState &fold(const IPlayer &player) override;
     const IState &reset();
-    const IState &redo();
-    const IState &undo();
 
     bool isValidMove(const IPlayer &player,
                      const IPoint &src,
