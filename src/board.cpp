@@ -146,6 +146,32 @@ Board::checkMap(const IMap<IPiece> &map, Type side) const
     return ret;
 }
 
+bool
+Board::isCheck(const IMap<IPiece> &map,
+                Type side,
+                const std::vector<IPoint> &this_pieces,
+                const std::vector<IPoint> &other_pieces,
+                const IPoint &this_king,
+                const IPoint &other_king) const
+{
+    //
+    return false;
+}
+
+bool
+Board::isCheckMate(const IMap<IPiece> &map,
+                    Type side,
+                    const std::vector<IPoint> &this_pieces,
+                    const std::vector<IPoint> &other_pieces,
+                    const IPoint &this_king,
+                    const IPoint &other_king,
+                    const bool recheck=true) const
+{
+    //
+    return false;
+}
+
+
 const IPoint *
 Board::getLastRankPawn() const
 {
