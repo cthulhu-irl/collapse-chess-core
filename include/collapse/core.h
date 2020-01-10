@@ -2,6 +2,7 @@
 #define COLLAPSE_CORE_H_
 
 #include <array>
+#include <vector>
 
 #include "collapse/core/base.h"
 
