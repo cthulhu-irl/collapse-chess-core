@@ -165,7 +165,7 @@ Board::isCheckMate(const IMap<IPiece> &map,
                     const std::vector<IPoint> &other_pieces,
                     const IPoint &this_king,
                     const IPoint &other_king,
-                    const bool recheck=true) const
+                    const bool recheck) const
 {
     //
     return false;
