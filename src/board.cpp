@@ -71,7 +71,11 @@ Board::upgradeRankPawn(PieceRole role)
 bool
 Board::isValidMove(const IPoint &src, const IPoint &dst) const
 {
-    // we'll need these later
+    // make sure point src != point dst
+    if (src == dst)
+        return false;
+
+     // we'll need these later
     IPiece *piece_src = this->map(src.getX(), src.getY());
     IPiece *piece_dst = this->map(dst.getX(), dst.getY());
 
@@ -79,11 +83,7 @@ Board::isValidMove(const IPoint &src, const IPoint &dst) const
     if (!piece_src)
         return false;
 
-    // make sure point src != point dst
-    if (src != dst)
-        return false;
-
-    // make sure piece type src != piece type at dst
+   // make sure piece type src != piece type at dst
     if (piece_dst && piece_src->getType() == piece_dst->getType())
         return false;
 
