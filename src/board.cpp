@@ -100,6 +100,7 @@ Status
 Board::checkMap(const IMap<IPiece> &map, Type side) const
 {
     Status ret = Status::TURN;
+
     // RANK: if the rows at y=0 and y=7 have any Pawn
 
     // scan the map and save the points
@@ -154,7 +155,17 @@ Board::isCheck(const IMap<IPiece> &map,
                 const IPoint &this_king,
                 const IPoint &other_king) const
 {
-    //
+    // for each piece at other_pieces (opposite side's pieces)
+    for (auto point_iter = other_pieces.cbegin();
+              point_iter != other_pieces.cend();
+              point_iter++)
+    {
+        // check if they threat this side's king
+        auto piece = map(point_iter->getX(), point_iter->getY());
+        if (piece->isValidMove(map, *point_iter, this_king))
+            return true;
+    }
+
     return false;
 }
 
