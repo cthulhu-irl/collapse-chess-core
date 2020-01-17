@@ -2,6 +2,7 @@
 #define COLLAPSE_CORE_BASE_H_
 
 #include <array>
+#include <vector>
 
 #define BOARD_MAX_X 8
 #define BOARD_MAX_Y 8
@@ -68,6 +69,8 @@ class IPiece {
     virtual bool isValidMove(const IMap<IPiece> &map,
                              const IPoint &src,
                              const IPoint &dst) const = 0;
+    virtual std::vector<IPoint> genWalkPointList(
+                            const IMap<IPiece> &map) const = 0;
     virtual Type getType() const = 0;
     virtual PieceRole getRole() const = 0;
     virtual IPiece *clone() const = 0;

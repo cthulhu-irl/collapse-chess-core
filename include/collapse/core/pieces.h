@@ -1,6 +1,8 @@
 #ifndef COLLAPSE_CORE_PIECES_H_
 #define COLLAPSE_CORE_PIECES_HPP
 
+#include <vector>
+
 #include "collapse/core/base.h"
 #include "collapse/core.h"
 
@@ -16,6 +18,8 @@ class King : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
+    std::vector<IPoint> genWalkPointList(
+                            const IMap<IPoint> &map) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -32,6 +36,8 @@ class Queen : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
+    std::vector<IPoint> genWalkPointList(
+                            const IMap<IPoint> &map) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -48,6 +54,8 @@ class Bishop : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
+    std::vector<IPoint> genWalkPointList(
+                            const IMap<IPoint> &map) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -64,6 +72,8 @@ class Knight : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
+    std::vector<IPoint> genWalkPointList(
+                            const IMap<IPoint> &map) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -80,6 +90,8 @@ class Rook : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
+    std::vector<IPoint> genWalkPointList(
+                            const IMap<IPoint> &map) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -96,6 +108,8 @@ class Pawn : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
+    std::vector<IPoint> genWalkPointList(
+                            const IMap<IPoint> &map) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
