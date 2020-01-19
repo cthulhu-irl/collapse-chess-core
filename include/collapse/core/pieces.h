@@ -18,7 +18,7 @@ class King : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
-    std::vector<IPoint> genWalkPointList(
+    std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
 
@@ -37,7 +37,7 @@ class Queen : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
-    std::vector<IPoint> genWalkPointList(
+    std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
 
@@ -56,7 +56,7 @@ class Bishop : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
-    std::vector<IPoint> genWalkPointList(
+    std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
 
@@ -75,7 +75,7 @@ class Knight : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
-    std::vector<IPoint> genWalkPointList(
+    std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
 
@@ -94,7 +94,7 @@ class Rook : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
-    std::vector<IPoint> genWalkPointList(
+    std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
 
@@ -113,7 +113,7 @@ class Pawn : public IPiece {
     bool isValidMove(const IMap<IPiece> &map,
                      const IPoint &src,
                      const IPoint &dst) const override;
-    std::vector<IPoint> genWalkPointList(
+    std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
 
