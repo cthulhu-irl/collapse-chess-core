@@ -40,16 +40,27 @@
         - prev
 
     + Pieces
-        * IPiece
+        + IPiece
             + add pure virtual clone method
-            - add pure virtual genWalkPointList method
+            + add pure virtual genWalkPointList method
 
-        + Knight
-        + Bishop
-        + Rook
-        + Queen
+        * Knight
+            - implement genWalkPointList method
+
+        * Bishop
+            - implement genWalkPointList method
+
+        * Rook
+            - implement genWalkPointList method
+
+        * Queen
+            - implement genWalkPointList method
+
         + Pawn
-        + King
+            + implement genWalkPointList method
+
+        * King
+            - implement genWalkPointList method
 
         + implement clone to return a dynamically allocated copy of
           itself

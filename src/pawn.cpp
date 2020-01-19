@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "collapse/core/base.h"
 #include "collapse/core/pieces.h"
 
@@ -48,6 +50,53 @@ Pawn::isValidMove(const IMap<IPiece> &map,
             return true;
 
     return false;
+}
+
+std::vector<IPoint *>
+Pawn::genWalkPointList(const IMap<IPiece> &map,
+                       const IPoint &src) const
+{
+    std::vector<IPoint *> list = {};
+    int x = 0, y = 0;
+    int forward_step = (getType() == Type::WHITE) ? 1 : -1;
+
+    // double forward
+    if (src.getY() == ((getType() == Type::WHITE) ? 1 : 6)) {
+        x = src.getX();
+        y = src.getY() + 2*forward_step;
+
+        if (isValidMove(map, src, Point(x, y)))
+            list.push_back(new Point(x, y));
+    }
+
+    if (src.getY() < 0 || src.getY() > 7) {
+        // one forward
+        x = src.getX();
+        y = src.getY() + forward_step;
+
+        if (isValidMove(map, src, Point(x, y)))
+            list.push_back(new Point(x, y));
+
+        // left horizontal attack
+        if (src.getX() > 0) {
+            x = src.getX() - 1;
+            y = src.getY() + forward_step;
+
+            if (isValidMove(map, src, Point(x, y)))
+                list.push_back(new Point(x, y));
+        }
+
+        // right horizontal attack
+        if (src.getX() < 7) {
+            x = src.getX() + 1;
+            y = src.getY() + forward_step;
+
+            if (isValidMove(map, src, Point(x, y)))
+                list.push_back(new Point(x, y));
+        }
+    }
+
+    return list;
 }
 
 }  // namespace core
