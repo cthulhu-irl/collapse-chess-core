@@ -44,8 +44,8 @@
             + add pure virtual clone method
             + add pure virtual genWalkPointList method
 
-        * Knight
-            - implement genWalkPointList method
+        + Knight
+            + implement genWalkPointList method
 
         * Bishop
             - implement genWalkPointList method
