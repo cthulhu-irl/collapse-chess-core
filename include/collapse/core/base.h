@@ -70,7 +70,8 @@ class IPiece {
                              const IPoint &src,
                              const IPoint &dst) const = 0;
     virtual std::vector<IPoint> genWalkPointList(
-                            const IMap<IPiece> &map) const = 0;
+                            const IMap<IPiece> &map,
+                            const IPoint &src) const = 0;
     virtual Type getType() const = 0;
     virtual PieceRole getRole() const = 0;
     virtual IPiece *clone() const = 0;
