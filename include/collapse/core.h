@@ -68,14 +68,14 @@ class Board : public IBoard {
     Status checkMap(const IMap<IPiece> &map, Type side) const;
     bool isCheck(const IMap<IPiece> &map,
                     Type side,
-                    const std::vector<IPoint> &this_pieces,
-                    const std::vector<IPoint> &other_pieces,
+                    const std::vector<IPoint *> &this_pieces,
+                    const std::vector<IPoint *> &other_pieces,
                     const IPoint &this_king,
                     const IPoint &other_king) const;
     bool isCheckMate(const IMap<IPiece> &map,
                         Type side,
-                        const std::vector<IPoint> &this_pieces,
-                        const std::vector<IPoint> &other_pieces,
+                        const std::vector<IPoint *> &this_pieces,
+                        const std::vector<IPoint *> &other_pieces,
                         const IPoint &this_king,
                         const IPoint &other_king,
                         const bool recheck=true) const;
