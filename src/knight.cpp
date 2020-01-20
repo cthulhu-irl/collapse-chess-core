@@ -33,16 +33,21 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
     std::vector<IPoint *> list = {};
     int x = src.getX(), y = 0;
 
+    // NOTE: +1s are for offset sanitization,
+    //       and are left explicit to be clear.
+
     // top-*-top
     if (src.getY() < 6) {
         y = src.getY() + 2;
 
         // top-left-top
-        if (src.getX() < 7 && isValidMove(map, src, Point(x+1, y)))
+        if (src.getX() < 7
+                && isValidMove(map, src, Point(x+1+1, y+1)))
             list.push_back(new Point(x+1, y));
 
         // top-right-top
-        if (src.getX() > 0 && isValidMove(map, src, Point(x-1, y)))
+        if (src.getX() > 0
+                && isValidMove(map, src, Point(x-1+1, y+1)))
             list.push_back(new Point(x-1, y));
     }
 
@@ -51,12 +56,14 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
         y = src.getY() - 2;
 
         // bot-left-bot
-        if (src.getX() < 7 && isValidMove(map, src, Point(x+1, y)))
-            list.push_back(new Point(x+1, y));
+        if (src.getX() < 7
+                && isValidMove(map, src, Point(x+1+1, y+1)))
+            list.push_back(new Point(x+1+1, y+1));
 
         // bot-right-bot
-        if (src.getX() > 0 && isValidMove(map, src, Point(x-1, y)))
-            list.push_back(new Point(x-1, y));
+        if (src.getX() > 0
+                && isValidMove(map, src, Point(x-1+1, y+1)))
+            list.push_back(new Point(x-1+1, y+1));
     }
 
     // top-*-bot
@@ -64,12 +71,14 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
         y = src.getY() + 1;
 
         // top-left-bot
-        if (src.getX() < 6 && isValidMove(map, src, Point(x+2, y)))
-            list.push_back(new Point(x+2, y));
+        if (src.getX() < 6
+                && isValidMove(map, src, Point(x+2+1, y+1)))
+            list.push_back(new Point(x+2+1, y+1));
 
         // top-right-bot
-        if (src.getX() > 1 && isValidMove(map, src, Point(x-2, y)))
-            list.push_back(new Point(x-2, y));
+        if (src.getX() > 1
+                && isValidMove(map, src, Point(x-2+1, y+1)))
+            list.push_back(new Point(x-2+1, y+1));
     }
 
     // bot-*-top
@@ -77,12 +86,14 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
         y = src.getY() - 1;
 
         // bot-left-top
-        if (src.getX() < 6 && isValidMove(map, src, Point(x+2, y)))
-            list.push_back(new Point(x+2, y));
+        if (src.getX() < 6
+                && isValidMove(map, src, Point(x+2+1, y+1)))
+            list.push_back(new Point(x+2+1, y+1));
 
         // bot-right-top
-        if (src.getX() > 1 && isValidMove(map, src, Point(x-2, y)))
-            list.push_back(new Point(x-2, y));
+        if (src.getX() > 1
+                && isValidMove(map, src, Point(x-2+1, y+1)))
+            list.push_back(new Point(x-2+1, y+1));
     }
 
     return list;

@@ -65,8 +65,8 @@ Pawn::genWalkPointList(const IMap<IPiece> &map,
         x = src.getX();
         y = src.getY() + 2*forward_step;
 
-        if (isValidMove(map, src, Point(x, y)))
-            list.push_back(new Point(x, y));
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
     }
 
     if (src.getY() < 0 || src.getY() > 7) {
@@ -74,23 +74,23 @@ Pawn::genWalkPointList(const IMap<IPiece> &map,
         x = src.getX();
         y = src.getY() + forward_step;
 
-        if (isValidMove(map, src, Point(x, y)))
-            list.push_back(new Point(x, y));
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
 
         // left horizontal attack
         if (src.getX() > 0) {
             x = src.getX() - 1;
 
-            if (isValidMove(map, src, Point(x, y)))
-                list.push_back(new Point(x, y));
+            if (isValidMove(map, src, Point(x+1, y+1)))
+                list.push_back(new Point(x+1, y+1));
         }
 
         // right horizontal attack
         if (src.getX() < 7) {
             x = src.getX() + 1;
 
-            if (isValidMove(map, src, Point(x, y)))
-                list.push_back(new Point(x, y));
+            if (isValidMove(map, src, Point(x+1, y+1)))
+                list.push_back(new Point(x+1, y+1));
         }
     }
 
