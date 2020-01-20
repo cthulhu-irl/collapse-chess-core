@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "collapse/core.h"
 #include "collapse/core/pieces.h"
 
@@ -43,6 +45,70 @@ King::isValidMove(const IMap<IPiece> &map,
         return true;
 
     return false;
+}
+
+std::vector<IPoint *>
+King::genWalkPointList(const IMap<IPiece> &map,
+                        const IPoint &src) const
+{
+    std::vector<IPoint *> list;
+    int x = src.getX(), y = 0;
+
+    // mid top
+    if (src.getY() < 7) {
+        y = src.getY() + 1;
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+    }
+
+    // mid bottom
+    if (src.getY() > 0) {
+        y = src.getY() - 1;
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+    }
+
+    // right
+    if (src.getX() < 7) {
+        x = src.getX() + 1;
+        y = src.getY();
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+
+        // top
+        y += 1;
+        if (y <= 7 && isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+
+        // bottom
+        y -= 2;
+        if (y >= 0 && isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+    }
+
+    // left
+    if (src.getX() > 0) {
+        x = src.getX() - 1;
+        y = src.getY();
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+
+        // top
+        y += 1;
+        if (y <= 7 && isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+
+        // bottom
+        y -= 2;
+        if (y >= 0 && isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+    }
+
+    return list;
 }
 
 }  // namespace core
