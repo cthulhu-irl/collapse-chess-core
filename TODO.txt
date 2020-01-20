@@ -59,8 +59,8 @@
         + Pawn
             + implement genWalkPointList method
 
-        * King
-            - implement genWalkPointList method
+        + King
+            + implement genWalkPointList method
 
         + implement clone to return a dynamically allocated copy of
           itself
