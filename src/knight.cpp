@@ -40,12 +40,12 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
     if (src.getY() < 6) {
         y = src.getY() + 2;
 
-        // top-left-top
+        // top-right-top
         if (src.getX() < 7
                 && isValidMove(map, src, Point(x+1+1, y+1)))
             list.push_back(new Point(x+1, y));
 
-        // top-right-top
+        // top-left-top
         if (src.getX() > 0
                 && isValidMove(map, src, Point(x-1+1, y+1)))
             list.push_back(new Point(x-1, y));
@@ -55,12 +55,12 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
     if (src.getY() > 1) {
         y = src.getY() - 2;
 
-        // bot-left-bot
+        // bot-right-bot
         if (src.getX() < 7
                 && isValidMove(map, src, Point(x+1+1, y+1)))
             list.push_back(new Point(x+1+1, y+1));
 
-        // bot-right-bot
+        // bot-left-bot
         if (src.getX() > 0
                 && isValidMove(map, src, Point(x-1+1, y+1)))
             list.push_back(new Point(x-1+1, y+1));
@@ -70,12 +70,12 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
     if (src.getY() < 7) {
         y = src.getY() + 1;
 
-        // top-left-bot
+        // top-right-bot
         if (src.getX() < 6
                 && isValidMove(map, src, Point(x+2+1, y+1)))
             list.push_back(new Point(x+2+1, y+1));
 
-        // top-right-bot
+        // top-left-bot
         if (src.getX() > 1
                 && isValidMove(map, src, Point(x-2+1, y+1)))
             list.push_back(new Point(x-2+1, y+1));
@@ -85,12 +85,12 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
     if (src.getY() > 0) {
         y = src.getY() - 1;
 
-        // bot-left-top
+        // bot-right-top
         if (src.getX() < 6
                 && isValidMove(map, src, Point(x+2+1, y+1)))
             list.push_back(new Point(x+2+1, y+1));
 
-        // bot-right-top
+        // bot-left-top
         if (src.getX() > 1
                 && isValidMove(map, src, Point(x-2+1, y+1)))
             list.push_back(new Point(x-2+1, y+1));
