@@ -118,13 +118,15 @@ Board::checkMap(const IMap<IPiece> &map, Type side) const
             IPoint *point = new Point(x, y);
 
             if (piece->getType() == side) {
-                if (!this_king && piece->getRole() == PieceRole::KING)
+                if (!this_king
+                        && piece->getRole() == PieceRole::KING)
                     this_king = point;
 
                 this_side.push_back(point);
             }
             else {
-                if (!other_king && piece->getRole() == PieceRole::KING)
+                if (!other_king
+                        && piece->getRole() == PieceRole::KING)
                     other_king = point;
 
                 other_side.push_back(point);
@@ -150,19 +152,20 @@ Board::checkMap(const IMap<IPiece> &map, Type side) const
 bool
 Board::isCheck(const IMap<IPiece> &map,
                 Type side,
-                const std::vector<IPoint> &this_pieces,
-                const std::vector<IPoint> &other_pieces,
+                const std::vector<IPoint *> &this_pieces,
+                const std::vector<IPoint *> &other_pieces,
                 const IPoint &this_king,
                 const IPoint &other_king) const
 {
     // for each piece at other_pieces (opposite side's pieces)
     for (auto point_iter = other_pieces.cbegin();
-              point_iter != other_pieces.cend();
-              point_iter++)
+                point_iter != other_pieces.cend();
+                point_iter++)
     {
         // check if they threat this side's king
-        auto piece = map(point_iter->getX(), point_iter->getY());
-        if (piece->isValidMove(map, *point_iter, this_king))
+        auto piece = map((*point_iter)->getX(),
+                            (*point_iter)->getY());
+        if (piece->isValidMove(map, **point_iter, this_king))
             return true;
     }
 
@@ -172,16 +175,87 @@ Board::isCheck(const IMap<IPiece> &map,
 bool
 Board::isCheckMate(const IMap<IPiece> &map,
                     Type side,
-                    const std::vector<IPoint> &this_pieces,
-                    const std::vector<IPoint> &other_pieces,
+                    const std::vector<IPoint *> &this_pieces,
+                    const std::vector<IPoint *> &other_pieces,
                     const IPoint &this_king,
                     const IPoint &other_king,
                     const bool recheck) const
 {
-    //
-    return false;
-}
+    // if recheck, then check if map is already in CHECK state
+    if (recheck && !isCheck(map, side, this_pieces, other_pieces,
+                                this_king, other_king))
+        return false;
 
+    // make a copy of map for further uses (temporary map)
+    IMap<IPiece> *tmap = new Map<IPiece>;
+
+    std::vector<IPoint *> moves;
+    IPoint *src;
+    IPoint *dst;
+    IPiece *piece;
+    bool is_checkmate = false;
+
+    // check if any of this_pieces have a move that gets
+    // this_king out of threat
+    for (auto point_iter=this_pieces.cbegin();
+                point_iter != this_pieces.cend() && !is_checkmate;
+                point_iter++)
+    {
+        src = *point_iter;
+        piece = map(src->getX(), src->getY());
+        if (!piece) continue;
+
+        moves = piece->genWalkPointList(map, *src);
+
+        // for each possible movements piece at point_iter can have
+        for (auto move_iter=moves.cbegin();
+                    move_iter != moves.cend() && !is_checkmate;
+                    move_iter++)
+        {
+            // re/set the temp map and destination
+            *tmap = map;
+            dst = *move_iter;
+
+            // make the move
+            tmap->move_from_to(src->getX(), src->getY(),
+                                dst->getX(), dst->getY(), false);
+
+            // does the move end up in check?
+            for (auto other_iter = other_pieces.cbegin();
+                        other_iter != other_pieces.cend();
+                        other_iter++)
+            {
+                // make sure this opposite piece isn't destroyed
+                // in temp map
+                if (**other_iter == *dst)
+                    continue;
+
+                // check if they threat this side's king
+                auto other_point = *other_iter;
+                auto other_piece = tmap->get(other_point->getX(),
+                                                other_point->getY());
+
+                if (other_piece->isValidMove(*tmap,
+                                        *other_point, this_king))
+                {
+                    is_checkmate = true;
+                    break;
+                }
+            }
+        }
+
+        // clean up the moves
+        for (auto iter=moves.begin(); iter != moves.end(); iter++)
+            if (*iter)
+                delete *iter;
+    }
+
+    // clean up
+    if (tmap)
+        delete tmap;
+
+    return is_checkmate;
+}
 
 const IPoint *
 Board::getLastRankPawn() const
