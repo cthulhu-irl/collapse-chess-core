@@ -57,7 +57,22 @@ King::genWalkPointList(const IMap<IPiece> &map,
                         const IPoint &src) const
 {
     std::vector<IPoint *> list;
-    int x = src.getX(), y = 0;
+    int x = 0, y = 0;
+
+    // castling
+    if (src.getX() == 4 && (src.getY() % 7) == 0) {
+        // right
+        x = src.getX() + 2;
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+
+        // left
+        x = src.getX() - 2;
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            list.push_back(new Point(x+1, y+1));
+    }
+
+    x = src.getX();
 
     // mid top
     if (src.getY() < 7) {
