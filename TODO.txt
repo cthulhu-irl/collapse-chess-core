@@ -73,17 +73,12 @@
         + move method
         + upgradeRankPawn method
         * isValidMove method
-        * check_map method
+        * checkMap method
         + set last_rank_pawn as pointer rather than reference
         + add isCheck method
-        - add isCheckMate method
-        - add redo method
-        - add undo method
+        + add isCheckMate method
 
     - Chess
-        - implement (define) all current declarations
-        - add redo method
-        - add undo method
 
     - DEFAULT_MAP (collapse/core.h)
 
