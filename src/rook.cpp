@@ -51,7 +51,7 @@ Rook::genWalkPointList(const IMap<IPiece> &map,
         for (y_step = -1; y_step <= 1; y_step++)
         {
             // one of x_step,y_step must be 0, but not both
-            if (!((x == 0 || y == 0) && x == y))
+            if (!((x_step == 0 || y_step == 0) && x_step == y_step))
                 break;
 
             // each step in x_step,y_step direction
