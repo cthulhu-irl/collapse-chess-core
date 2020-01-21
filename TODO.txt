@@ -47,14 +47,14 @@
         + Knight
             + implement genWalkPointList method
 
-        * Bishop
-            - implement genWalkPointList method
+        + Bishop
+            + implement genWalkPointList method
 
-        * Rook
-            - implement genWalkPointList method
+        + Rook
+            + implement genWalkPointList method
 
-        * Queen
-            - implement genWalkPointList method
+        + Queen
+            + implement genWalkPointList method
 
         + Pawn
             + implement genWalkPointList method
