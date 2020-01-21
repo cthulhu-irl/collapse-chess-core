@@ -36,5 +36,40 @@ Queen::isValidMove(const IMap<IPiece> &map,
     return true;
 }
 
+std::vector<IPoint *>
+Queen::genWalkPointList(const IMap<IPiece> &map,
+                        const IPoint &src) const
+{
+    std::vector<IPoint *> list;
+    int x, y;
+    int x_step, y_step;
+
+    // x directions
+    for (x_step = -1; x_step <= 1; x_step++)
+    {
+        // y directions
+        for (y_step = -1; y_step <= 1; y_step++)
+        {
+            // each step in x_step,y_step direction
+            for (x=src.getX()+x_step, y=src.getY()+y_step;
+                    (0 <= x && x <= 7) && (0 <= y && y <= 7);
+                    x += x_step, y += y_step)
+            {
+                // get the piece at x,y as dest if there is any
+                const IPiece *piece = map(x, y);
+
+                // add the point to list if no piece or opposite type
+                if (!piece || piece->getType() != getType())
+                    list.push_back(new Point(x+1, y+1));
+                
+                // if a piece was found, there's no point to continue
+                if (piece) break;
+            }
+        }
+    }
+
+    return list;
+}
+
 }  // namespace core
 }  // namespace collapse
