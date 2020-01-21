@@ -14,6 +14,11 @@ King::isValidMove(const IMap<IPiece> &map,
     char delta_x = dst.getX() - src.getX();
     char delta_y = dst.getY() - src.getY();
 
+    // explicitly here just due genWalkPointList
+    IPiece *dst_piece = map(dst.getX(), dst.getY());
+    if (dst_piece && dst_piece->getType() == getType())
+        return false;
+
     // is it a castling move?
     // check if king is in its initial point
     if (src.getX() == 4 && (src.getY() % 7) == 0)
@@ -30,10 +35,10 @@ King::isValidMove(const IMap<IPiece> &map,
 
             // check if there aren't anything between
             char stepper = (abs(delta_x) + 1) - delta_x;
-            if (map(dst.getX() - stepper, dst.getY()) == nullptr)
+            if (map(dst.getX() - stepper, dst.getY()) != nullptr)
                 return false;
 
-            if (map(dst.getX() - stepper*2, dst.getY()) == nullptr)
+            if (map(dst.getX() - stepper*2, dst.getY()) != nullptr)
                 return false;
 
             return true;
