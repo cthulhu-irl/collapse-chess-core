@@ -42,6 +42,7 @@ class IPoint {
     virtual bool operator!=(const IPoint &other) const;
     virtual char getX() const = 0;
     virtual char getY() const = 0;
+    virtual ~IPoint() = default;
 };
 
 class IPlayer {
@@ -60,6 +61,7 @@ class IMap {
                             std::size_t x2, std::size_t y2,
                             bool swap=false) = 0;
     virtual T *operator()(std::size_t x, std::size_t y) const = 0;
+    virtual ~IMap() = default;
 };
 
 /// a chess piece responsible for satisfying if a move
@@ -75,6 +77,7 @@ class IPiece {
     virtual Type getType() const = 0;
     virtual PieceRole getRole() const = 0;
     virtual IPiece *clone() const = 0;
+    virtual ~IPiece() = default;
 };
 
 class IBoard {
