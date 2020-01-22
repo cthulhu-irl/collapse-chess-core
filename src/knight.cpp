@@ -16,7 +16,7 @@ Knight::isValidMove(const IMap<IPiece> &map,
     char delta_y = dst.getY() - src.getY();
 
     // explicitly here just due genWalkPoinList
-    IPiece *dst_piece = map(dst.getX(), dst.getY())
+    IPiece *dst_piece = map(dst.getX(), dst.getY());
     if (dst_piece && dst_piece->getType() == getType())
         return false;
 
