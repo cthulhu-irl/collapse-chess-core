@@ -91,18 +91,36 @@ Board::isValidMove(const IPoint &src, const IPoint &dst) const
     if (!piece_src->isValidMove(this->map, src, dst))
         return false;
 
-    // TODO check if that move doesn't end up in CHECKMATE
+    // fallback return value
+    bool ret_val = true;
 
-    return true;
+    // take a temporary map copy
+    IMap<IPiece> *tmap = new Map<IPiece>;
+    *tmap = map;
+
+    // simulate the move
+    tmap->move_from_to(src.getX(), src.getY(),
+                            dst.getX(), dst.getY(), false);
+
+    // check if the move doesn't end up in CHECK or CHECKMATE
+    Status next_status = checkMap(*tmap, piece_src->getType());
+    if (next_status == Status::CHECK
+            && next_status == Status::CHECKMATE)
+        ret_val = false;
+
+    // clean up
+    delete tmap;
+
+    return ret_val;
 }
 
 Status
 Board::checkMap(const IMap<IPiece> &map, Type side) const
 {
     Status ret = Status::TURN;
+    IPiece *piece = nullptr;
 
     // RANK: if the rows at y=0 and y=7 have any Pawn
-
     // scan the map and save the points
     std::vector<IPoint *> this_side;
     std::vector<IPoint *> other_side;
@@ -111,7 +129,7 @@ Board::checkMap(const IMap<IPiece> &map, Type side) const
 
     for (size_t y=0; y < 8; y++) {
         for (size_t x=0; x < 8; x++) {
-            IPiece *piece = this->map(x, y);
+            piece = this->map(x, y);
             if (!piece)
                 continue;
 
@@ -132,20 +150,48 @@ Board::checkMap(const IMap<IPiece> &map, Type side) const
                 other_side.push_back(point);
             }
 
+            if ((y % 7 == 0) && piece->getRole() == PieceRole::PAWN)
+            {
+                ret = Status::RANK;
+                break;
+            }
+        }
+
+        if (ret != Status::TURN)
+            break;
+    }
+
+    if (ret == Status::TURN) {
+        // CHECK
+        if (isCheck(map, side, this_side, other_side,
+                                    *this_king, *other_king))
+        {
+            ret = Status::CHECK;
+
+            // CHECKMATE
+            if (isCheckMate(map, side, this_side, other_side,
+                                    *this_king, *other_king, false))
+                ret = Status::CHECKMATE;
+        }
+
+        // STALEMATE
+        else {
+            // no idea for STALEMATE for now...
+            // nop...
         }
     }
 
-    // CHECK & CHECKMATE:
-    // if the king is NOT safe it can be check or checkmate
-        // CHECKMATE
-        // if there isn't anything threatening king, return CHECK
-        // otherwise there are 3 ways NOT to be checkmate
-        // 1. if king has a move that doesn't end up another check
-        // 2. if there is only one threatening piece and there is
-        // another piece of this `side` threatening it
-        // otherwise it's definitely a CHECK
-    // STALEMATE:
-        // no idea for STALEMATE for now...
+    // clean up
+    for (auto iter=this_side.begin();
+            iter != this_side.end();
+            iter++)
+        delete *iter;
+
+    for (auto iter=other_side.begin();
+            iter != other_side.end();
+            iter++)
+        delete *iter;
+
     return ret;
 }
 
