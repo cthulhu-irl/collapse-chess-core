@@ -72,7 +72,7 @@
         + getter methods
         + move method
         + upgradeRankPawn method
-        * isValidMove method
+        + isValidMove method
         * checkMap method
         + set last_rank_pawn as pointer rather than reference
         + add isCheck method
