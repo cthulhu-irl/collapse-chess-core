@@ -13,18 +13,19 @@ Pawn::isValidMove(const IMap<IPiece> &map,
 {
     char delta_x = dst.getX() - src.getX();
     char delta_y = dst.getY() - dst.getY();
-    
-    IPiece *piece_dst = map(dst.getX(), dst.getY());
-    IPiece *piece_src = map(src.getX(), src.getY());
 
-    char forward_step = (piece_src->getType() == Type::WHITE)
-                        ? 1 : -1;
+    IPiece *piece_dst = map(dst.getX(), dst.getY());
+
+    // explicitly here just due genWalkPoinList
+    if (piece_dst && piece_dst->getType() == getType())
+        return false;
+
+    char forward_step = (getType() == Type::WHITE) ? 1 : -1;
 
 	// check if it's a diagonal attack movement
     if (abs(delta_x) == 1 && delta_y == forward_step)
     {
-        if (piece_dst != nullptr
-                && piece_dst->getType() != piece_src->getType())
+        if (piece_dst != nullptr)
             return true;
 
         return false;
