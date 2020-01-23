@@ -45,6 +45,15 @@ Chess::reset()
     return this->state;
 }
 
+bool
+Chess::isValidMove(const IPlayer &player,
+                     const IPoint &src,
+                     const IPoint &dst) const
+{
+    //
+    return false;
+}
+
 const IState &
 Chess::getState() const
 {
