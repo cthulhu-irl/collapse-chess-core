@@ -78,7 +78,7 @@
         + add isCheck method
         + add isCheckMate method
 
-    - Chess
+    + Chess
 
     - DEFAULT_MAP (collapse/core.h)
 
