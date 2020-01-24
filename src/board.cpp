@@ -24,8 +24,13 @@ Board::move(const IPoint &src, const IPoint &dst)
         return false;
 
     // replace piece at destination with piece at src
-    this->map.move_from_to(src.getX(), src.getY(),
-                               dst.getX(), dst.getY(), false);
+    IPiece *piece = this->map.move_from_to(src.getX(), src.getY(),
+                                    dst.getX(), dst.getY(), false);
+    if (!piece)
+        return false;
+
+    // update status
+    this->status = this->checkMap(this->map, piece->getType());
 
     return true;
 }
@@ -64,6 +69,9 @@ Board::upgradeRankPawn(PieceRole role)
 
     // unset the last_rank_pawn (set it to nullptr)
     this->last_rank_pawn = nullptr;
+
+    // update status
+    this->status = this->checkMap(this->map, ptype);
 
     return true;
 }
