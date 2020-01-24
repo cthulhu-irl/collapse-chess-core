@@ -12,8 +12,8 @@ namespace core {
 Board::Board(Map<IPiece> &map)
 {
     this->map = map;
-    this->status = Status::TURN;
     this->last_rank_pawn = nullptr;
+    this->status = this->checkMap(map, Type::WHITE);
 }
 
 bool
