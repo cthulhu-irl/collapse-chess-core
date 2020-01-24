@@ -12,7 +12,8 @@ Chess::Chess(IPlayer &white, IPlayer &black, Map<IPiece> &map)
     , player_white(white)
     , map_init(map)
 {
-    // update the state
+    // update the state's status
+    state.status = this->board.getStatus();
 }
 
 const IState &
