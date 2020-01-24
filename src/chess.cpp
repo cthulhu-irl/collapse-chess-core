@@ -44,8 +44,25 @@ const IState &
 Chess::rank(const IPlayer &player, PieceRole role)
 {
     // is the current player?
+    if (player != this->state.player)
+        return this->state;
+
+    // is it the rank status?
+    if (this->state.status != Status::RANK)
+        return this->state;
+
     // update if board agrees
+    if (!(this->board.upgradeRankPawn(role)))
+        return this->state;
+
     // update the state
+    if (this->state.player == this->player_white)
+        this->state.player = this->player_black;
+    else
+        this->state.player = this->player_white;
+
+    this->state.status = this->board.getStatus();
+
     return this->state;
 }
 
