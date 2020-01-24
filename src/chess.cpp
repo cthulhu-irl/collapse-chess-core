@@ -21,6 +21,11 @@ Chess::move(const IPlayer &player,
             const IPoint &src,
             const IPoint &dst)
 {
+    // does the status satisfy a move?
+    if (this->state.status != Status::TURN
+            || this->state.status != Status::CHECK)
+        return this->state;
+
     // is it the current player?
     if (player != this->state.player)
         return this->state;
