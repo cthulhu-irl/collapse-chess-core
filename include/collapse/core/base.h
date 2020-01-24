@@ -49,6 +49,8 @@ class IPlayer {
  public:
     virtual Type getType() const = 0;
     virtual PieceRole getRole() const = 0;
+    virtual bool operator==(const IPlayer &other) const = 0;
+    virtual bool operator!=(const IPlayer &other) const = 0;
 };
 
 template<typename T>

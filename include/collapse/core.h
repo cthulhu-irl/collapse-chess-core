@@ -28,6 +28,12 @@ class Player : public IPlayer {
  public:
     explicit Player(Type type) : type(type) {};
     Type getType() const { return type; };
+
+    bool operator==(const IPlayer &other) const override
+        { return type == other.getType(); }
+
+    bool operator!=(const IPlayer &other) const override
+        { return type != other.getType(); }
 };
 
 template<typename T>
