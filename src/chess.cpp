@@ -107,9 +107,17 @@ Chess::isValidMove(const IPlayer &player,
                      const IPoint &src,
                      const IPoint &dst) const
 {
+    // does the status allow a movement?
+    if (this->state.status != Status::TURN
+            || this->state.status != Status::CHECK)
+        return false;
+
     // is it the current player?
-    // does board agree with the move?
-    return false;
+    if (player != this->state.player)
+        return false;
+
+    // does the board agree with the movement?
+    return this->board.isValidMove(src, dst);
 }
 
 const IState &
