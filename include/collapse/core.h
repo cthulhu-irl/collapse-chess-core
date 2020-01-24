@@ -105,7 +105,7 @@ class Chess : public IChess {
  public:
     IPlayer &player_black;
     IPlayer &player_white;
-    IMap<IPiece> &map_init;
+    Map<IPiece> &map_init;
 
     Chess(IPlayer &white, IPlayer &black, Map<IPiece> &map);
 
