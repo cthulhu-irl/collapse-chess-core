@@ -93,7 +93,12 @@ const IState &
 Chess::reset()
 {
     // reset the board
-    // update the state
+    this->board = Board(this->map_init);
+
+    // reset the state
+    this->state.player = this->player_white;
+    this->state.status = this->board.getStatus();
+
     return this->state;
 }
 
