@@ -75,7 +75,17 @@ const IState &
 Chess::fold(const IPlayer &player)
 {
     // is the current player?
+    if (player != this->state.player)
+        return this->state;
+
     // update the state
+    if (this->state.player == this->player_white)
+        this->state.player = this->player_black;
+    else
+        this->state.player = this->player_white;
+
+    this->state.status = Status::FOLD;
+
     return this->state;
 }
 
