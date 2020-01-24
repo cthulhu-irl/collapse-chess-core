@@ -22,9 +22,21 @@ Chess::move(const IPlayer &player,
             const IPoint &dst)
 {
     // is it the current player?
-    // is it a valid move?
-    // make the move
+    if (player != this->state.player)
+        return this->state;
+
+    // make the move if agrees
+    if (!(this->board.move(src, dst)))
+        return this->state;
+
     // update state
+    if (this->state.player == this->player_white)
+        this->state.player = this->player_black;
+    else
+        this->state.player = this->player_white;
+
+    this->state.status = this->board.getStatus();
+
     return this->state;
 }
 
