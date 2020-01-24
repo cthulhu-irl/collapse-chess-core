@@ -43,12 +43,12 @@ Chess::move(const IPlayer &player,
 const IState &
 Chess::rank(const IPlayer &player, PieceRole role)
 {
-    // is the current player?
-    if (player != this->state.player)
-        return this->state;
-
     // is it the rank status?
     if (this->state.status != Status::RANK)
+        return this->state;
+
+    // is the current player?
+    if (player != this->state.player)
         return this->state;
 
     // update if board agrees
