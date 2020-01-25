@@ -87,7 +87,7 @@
 
     + Chess
 
-    - DEFAULT_MAP (collapse/core.h)
+    + DEFAULT_MAP (collapse/core/maps.h)
 
  - Exception Classes
     - PointInvalidRange
