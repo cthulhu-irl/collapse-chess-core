@@ -74,6 +74,9 @@ class IPiece {
                              const IPoint &src,
                              const IPoint &dst) const = 0;
     virtual std::vector<IPoint *> genWalkPointList(
+                                    const IMap<IPiece> &map,
+                                    const IPoint &src) const = 0;
+    virtual size_t countWalkPointList(
                                 const IMap<IPiece> &map,
                                 const IPoint &src) const = 0;
     virtual Type getType() const = 0;

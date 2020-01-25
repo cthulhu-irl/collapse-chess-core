@@ -43,6 +43,7 @@
         + IPiece
             + add pure virtual clone method
             + add pure virtual genWalkPointList method
+            + add pure virtual countWalkPointList method
 
         + Knight
             + implement genWalkPointList method
