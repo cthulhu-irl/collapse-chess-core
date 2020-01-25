@@ -61,9 +61,9 @@
             + implement genWalkPointList method
             - implement countWalkPointList method
 
-        * Pawn
+        + Pawn
             + implement genWalkPointList method
-            - implement countWalkPointList method
+            + implement countWalkPointList method
 
         + King
             + implement genWalkPointList method

@@ -98,5 +98,50 @@ Pawn::genWalkPointList(const IMap<IPiece> &map,
     return list;
 }
 
+size_t
+Pawn::countWalkPointList(const IMap<IPiece> &map,
+                           const IPoint &src) const
+{
+    size_t count = 0;
+    int x = 0, y = 0;
+    int forward_step = (getType() == Type::WHITE) ? 1 : -1;
+
+    // double forward
+    if (src.getY() == ((getType() == Type::WHITE) ? 1 : 6)) {
+        x = src.getX();
+        y = src.getY() + 2*forward_step;
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+    }
+
+    if (src.getY() < 0 || src.getY() > 7) {
+        // one forward
+        x = src.getX();
+        y = src.getY() + forward_step;
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+
+        // left horizontal attack
+        if (src.getX() > 0) {
+            x = src.getX() - 1;
+
+            if (isValidMove(map, src, Point(x+1, y+1)))
+                count++;
+        }
+
+        // right horizontal attack
+        if (src.getX() < 7) {
+            x = src.getX() + 1;
+
+            if (isValidMove(map, src, Point(x+1, y+1)))
+                count++;
+        }
+    }
+
+    return count;
+}
+
 }  // namespace core
 }  // namespace collapse
