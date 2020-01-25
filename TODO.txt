@@ -45,23 +45,29 @@
             + add pure virtual genWalkPointList method
             + add pure virtual countWalkPointList method
 
-        + Knight
+        * Knight
             + implement genWalkPointList method
+            - implement countWalkPointList method
 
-        + Bishop
+        * Bishop
             + implement genWalkPointList method
+            - implement countWalkPointList method
 
-        + Rook
+        * Rook
             + implement genWalkPointList method
+            - implement countWalkPointList method
 
-        + Queen
+        * Queen
             + implement genWalkPointList method
+            - implement countWalkPointList method
 
-        + Pawn
+        * Pawn
             + implement genWalkPointList method
+            - implement countWalkPointList method
 
-        + King
+        * King
             + implement genWalkPointList method
+            - implement countWalkPointList method
 
         + implement clone to return a dynamically allocated copy of
           itself

@@ -21,6 +21,9 @@ class King : public IPiece {
     std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
+    size_t countWalkPointList(
+                    const IMap<IPiece> &map,
+                    const IPoint &src) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -40,6 +43,9 @@ class Queen : public IPiece {
     std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
+    size_t countWalkPointList(
+                    const IMap<IPiece> &map,
+                    const IPoint &src) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -59,6 +65,9 @@ class Bishop : public IPiece {
     std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
+    size_t countWalkPointList(
+                    const IMap<IPiece> &map,
+                    const IPoint &src) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -78,6 +87,9 @@ class Knight : public IPiece {
     std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
+    size_t countWalkPointList(
+                    const IMap<IPiece> &map,
+                    const IPoint &src) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -97,6 +109,9 @@ class Rook : public IPiece {
     std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
+    size_t countWalkPointList(
+                    const IMap<IPiece> &map,
+                    const IPoint &src) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
@@ -116,6 +131,9 @@ class Pawn : public IPiece {
     std::vector<IPoint *> genWalkPointList(
                             const IMap<IPiece> &map,
                             const IPoint &src) const override;
+    size_t countWalkPointList(
+                    const IMap<IPiece> &map,
+                    const IPoint &src) const override;
 
     Type getType() const override { return type; }
     PieceRole getRole() const override { return role; }
