@@ -45,9 +45,9 @@
             + add pure virtual genWalkPointList method
             + add pure virtual countWalkPointList method
 
-        * Knight
+        + Knight
             + implement genWalkPointList method
-            - implement countWalkPointList method
+            + implement countWalkPointList method
 
         * Bishop
             + implement genWalkPointList method

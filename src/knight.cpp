@@ -104,5 +104,78 @@ Knight::genWalkPointList(const IMap<IPiece> &map,
     return list;
 }
 
+size_t
+Knight::countWalkPointList(const IMap<IPiece> &map,
+                             const IPoint &src) const
+{
+    size_t count = 0;
+    int x = src.getX(), y = 0;
+
+    // NOTE: +1s are for offset sanitization,
+    //       and are left explicit to be clear.
+
+    // top-*-top
+    if (src.getY() < 6) {
+        y = src.getY() + 2;
+
+        // top-right-top
+        if (src.getX() < 7
+                && isValidMove(map, src, Point(x+1+1, y+1)))
+            count++;
+
+        // top-left-top
+        if (src.getX() > 0
+                && isValidMove(map, src, Point(x-1+1, y+1)))
+            count++;
+    }
+
+    // bot-*-bot
+    if (src.getY() > 1) {
+        y = src.getY() - 2;
+
+        // bot-right-bot
+        if (src.getX() < 7
+                && isValidMove(map, src, Point(x+1+1, y+1)))
+            count++;
+
+        // bot-left-bot
+        if (src.getX() > 0
+                && isValidMove(map, src, Point(x-1+1, y+1)))
+            count++;
+    }
+
+    // top-*-bot
+    if (src.getY() < 7) {
+        y = src.getY() + 1;
+
+        // top-right-bot
+        if (src.getX() < 6
+                && isValidMove(map, src, Point(x+2+1, y+1)))
+            count++;
+
+        // top-left-bot
+        if (src.getX() > 1
+                && isValidMove(map, src, Point(x-2+1, y+1)))
+            count++;
+    }
+
+    // bot-*-top
+    if (src.getY() > 0) {
+        y = src.getY() - 1;
+
+        // bot-right-top
+        if (src.getX() < 6
+                && isValidMove(map, src, Point(x+2+1, y+1)))
+            count++;
+
+        // bot-left-top
+        if (src.getX() > 1
+                && isValidMove(map, src, Point(x-2+1, y+1)))
+            count++;
+    }
+
+    return count;
+}
+
 }  // namespace core
 }  // namespace collapse
