@@ -184,8 +184,65 @@ Board::checkMap(const IMap<IPiece> &map, Type side) const
 
         // STALEMATE
         else {
-            // no idea for STALEMATE for now...
-            // nop...
+            // check if there are any possible movement
+            // for king that doesn't end up checkmate
+            std::vector<IPoint *> this_single_side = {this_king};
+            piece = map(this_king->getX(), this_king->getY());
+
+            std::vector<IPoint *> king_moves =
+                            piece->genWalkPointList(map, *this_king);
+
+            IMap<IPiece> *tmap = new Map<IPiece>;
+            bool has_king_moves = false;
+
+            for (auto move_point : king_moves) {
+                *tmap = map;
+
+                // temporary movement
+                tmap->move_from_to(
+                            this_king->getX(), this_king->getY(),
+                            move_point->getX(), move_point->getY(),
+                            false);
+
+                // doesn't the move fall in checkmate?
+                // no point to check more, if a move has been found
+                if (!has_king_moves &&
+                        !isCheckMate(*tmap, side, this_single_side,
+                                        other_side, *this_king,
+                                        *other_king, false))
+                {
+                    has_king_moves = true;
+                }
+
+                // clean up
+                delete move_point;
+            }
+
+            // clean up
+            delete tmap;
+
+            // check if other piece have any possible move
+            if (!has_king_moves) {
+                bool has_others_moves = false;
+
+                for (auto point : this_side) {
+                    // no the king, we have checked that
+                    // in proper way
+                    if (*point == *this_king)
+                        continue;
+
+                    piece = map(point->getX(), point->getY());
+
+                    if (piece->countWalkPointList(map, *point)) {
+                        has_others_moves = true;
+                        break;
+                    }
+                }
+
+                // there aren't any other piece moves?
+                if (!has_others_moves)
+                    ret = Status::STALEMATE;
+            }
         }
     }
 

@@ -74,13 +74,13 @@
 
     + State
 
-    * Board
+    + Board
         + constructor
         + getter methods
         + move method
         + upgradeRankPawn method
         + isValidMove method
-        * checkMap method
+        + checkMap method
         + set last_rank_pawn as pointer rather than reference
         + add isCheck method
         + add isCheckMate method
