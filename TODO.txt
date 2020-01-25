@@ -53,9 +53,9 @@
             + implement genWalkPointList method
             - implement countWalkPointList method
 
-        * Rook
+        + Rook
             + implement genWalkPointList method
-            - implement countWalkPointList method
+            + implement countWalkPointList method
 
         + Queen
             + implement genWalkPointList method
