@@ -65,9 +65,9 @@
             + implement genWalkPointList method
             - implement countWalkPointList method
 
-        * King
+        + King
             + implement genWalkPointList method
-            - implement countWalkPointList method
+            + implement countWalkPointList method
 
         + implement clone to return a dynamically allocated copy of
           itself

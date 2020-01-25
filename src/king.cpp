@@ -131,5 +131,84 @@ King::genWalkPointList(const IMap<IPiece> &map,
     return list;
 }
 
+size_t
+King::countWalkPointList(const IMap<IPiece> &map,
+                            const IPoint &src) const
+{
+    size_t count = 0;
+    int x = 0, y = 0;
+
+    // castling
+    if (src.getX() == 4 && (src.getY() % 7) == 0) {
+        // right
+        x = src.getX() + 2;
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+
+        // left
+        x = src.getX() - 2;
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+    }
+
+    x = src.getX();
+
+    // mid top
+    if (src.getY() < 7) {
+        y = src.getY() + 1;
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+    }
+
+    // mid bottom
+    if (src.getY() > 0) {
+        y = src.getY() - 1;
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+    }
+
+    // right
+    if (src.getX() < 7) {
+        x = src.getX() + 1;
+        y = src.getY();
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+
+        // top
+        y += 1;
+        if (y <= 7 && isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+
+        // bottom
+        y -= 2;
+        if (y >= 0 && isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+    }
+
+    // left
+    if (src.getX() > 0) {
+        x = src.getX() - 1;
+        y = src.getY();
+
+        if (isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+
+        // top
+        y += 1;
+        if (y <= 7 && isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+
+        // bottom
+        y -= 2;
+        if (y >= 0 && isValidMove(map, src, Point(x+1, y+1)))
+            count++;
+    }
+
+    return count;
+}
+
 }  // namespace core
 }  // namespace collapse
