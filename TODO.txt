@@ -20,7 +20,7 @@
 
     + fix midway looper in Queen, Bishop and Rook
 
- * implement in order
+ + implement in order
     + Point
         + add operator== method
         + add operator!= method
@@ -32,7 +32,7 @@
         + add replace method
         + implement destructor
 
-+ Pieces
+    + Pieces
         + IPiece
             + add pure virtual clone method
             + add pure virtual genWalkPointList method
