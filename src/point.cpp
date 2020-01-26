@@ -1,4 +1,6 @@
 #include "collapse/core.h"
+#include "collapse/core/base.h"
+#include "collapse/core/exceptions.h"
 
 using namespace collapse;
 using namespace core;
@@ -18,7 +20,7 @@ Point::Point(char x, char y)
 
     // otherwise throw an exception
     else
-        throw "PointException should be replaced in here";
+        throw PointInvalidRange();
 
     // check if 1 <= y <= 8, then assign
     if (1 <= y && y <= 8)
@@ -26,7 +28,7 @@ Point::Point(char x, char y)
 
     // otherwise throw an exception
     else
-        throw "PointException should be replaced in here";
+        throw PointInvalidRange();
 }
 
 inline bool

@@ -89,5 +89,5 @@
 
     + DEFAULT_MAP (collapse/core/maps.h)
 
- - Exception Classes
-    - PointInvalidRange
+ + Exception Classes
+    + PointInvalidRange
