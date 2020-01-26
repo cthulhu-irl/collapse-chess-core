@@ -32,14 +32,7 @@
         + add replace method
         + implement destructor
 
-    - Movement (using Movement = std::pair<IPoint, IPoint>)
-    - StackList (template<typename T>)
-        - push
-        - pop
-        - next
-        - prev
-
-    + Pieces
++ Pieces
         + IPiece
             + add pure virtual clone method
             + add pure virtual genWalkPointList method
