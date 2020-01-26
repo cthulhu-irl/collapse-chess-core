@@ -3,6 +3,9 @@
 
 #include <exception>
 
+namespace collapse {
+namespace core {
+
 class PointInvalidRange : public std::exception {
 
     const char *what() const throw()
@@ -11,5 +14,8 @@ class PointInvalidRange : public std::exception {
     }
 
 };
+
+}  // namespace core
+}  // namespace collapse
 
 #endif  // COLLAPSE_CORE_EXCEPTIONS_H_
