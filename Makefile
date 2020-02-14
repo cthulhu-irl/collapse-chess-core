@@ -28,6 +28,10 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 .PHONY: build
 build: $(TARGET)
 
+.PHONY: install
+install: $(TARGET)
+	install -c libcollapse-core.so /usr/local/lib/
+
 .PHONY: clean
 clean:
 	rm -rf $(BUILDDIR)
